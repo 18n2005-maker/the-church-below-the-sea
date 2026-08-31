@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "category": "grammar",
+    "difficulty": "easy",
+    "text": "The manager _____ the report before the meeting.",
+    "answers": [
+      "review",
+      "reviews",
+      "reviewing",
+      "reviewed"
+    ],
+    "correct": "D",
+    "explanation": "The action happened before the meeting, so the past tense 'reviewed' is appropriate."
+  },
+  {
+    "id": 2,
+    "category": "grammar",
+    "difficulty": "easy",
+    "text": "Please _____ the document before signing it.",
+    "answers": [
+      "read",
+      "reads",
+      "reading",
+      "reader"
+    ],
+    "correct": "A",
+    "explanation": "After 'please', use the base form of the verb: 'read'."
+  },
+  {
+    "id": 3,
+    "category": "grammar",
+    "difficulty": "easy",
+    "text": "The employees _____ the meeting every Monday.",
+    "answers": [
+      "attend",
+      "attends",
+      "attending",
+      "attended"
+    ],
+    "correct": "A",
+    "explanation": "The subject 'employees' is plural, so the base form 'attend' is correct."
+  },
+  {
+    "id": 4,
+    "category": "vocabulary",
+    "difficulty": "easy",
+    "text": "The company plans to _____ a new product next month.",
+    "answers": [
+      "launch",
+      "launched",
+      "launching",
+      "launches"
+    ],
+    "correct": "A",
+    "explanation": "After 'plans to', use the base form of the verb: 'launch'."
+  },
+  {
+    "id": 5,
+    "category": "grammar",
+    "difficulty": "medium",
+    "text": "Ms. Brown has worked at the company _____ 2018.",
+    "answers": [
+      "for",
+      "since",
+      "during",
+      "while"
+    ],
+    "correct": "B",
+    "explanation": "'Since' is used with a specific point in time, such as a year."
+  },
+  {
+    "id": 6,
+    "category": "grammar",
+    "difficulty": "medium",
+    "text": "The meeting was postponed _____ the manager was unavailable.",
+    "answers": [
+      "because",
+      "although",
+      "unless",
+      "despite"
+    ],
+    "correct": "A",
+    "explanation": "'Because' introduces the reason why the meeting was postponed."
+  },
+  {
+    "id": 7,
+    "category": "vocabulary",
+    "difficulty": "medium",
+    "text": "Employees are required to _____ their identification cards at all times.",
+    "answers": [
+      "carry",
+      "borrow",
+      "repair",
+      "deliver"
+    ],
+    "correct": "A",
+    "explanation": "'Carry' means to have something with you."
+  },
+  {
+    "id": 8,
+    "category": "grammar",
+    "difficulty": "medium",
+    "text": "The new office is _____ than the previous one.",
+    "answers": [
+      "spacious",
+      "more spacious",
+      "most spacious",
+      "more spaciously"
+    ],
+    "correct": "B",
+    "explanation": "For a comparison with a long adjective, use 'more + adjective'."
+  },
+  {
+    "id": 9,
+    "category": "grammar",
+    "difficulty": "medium",
+    "text": "The documents _____ by the assistant yesterday.",
+    "answers": [
+      "prepare",
+      "prepared",
+      "were prepared",
+      "are preparing"
+    ],
+    "correct": "C",
+    "explanation": "The documents receive the action, so the passive form 'were prepared' is required."
+  },
+  {
+    "id": 10,
+    "category": "vocabulary",
+    "difficulty": "medium",
+    "text": "The company decided to _____ the deadline for submitting applications.",
+    "answers": [
+      "extend",
+      "attend",
+      "operate",
+      "install"
+    ],
+    "correct": "A",
+    "explanation": "'Extend a deadline' means to allow more time before something is due."
+  }
+]

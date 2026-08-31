@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Church Below the Sea</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       教会の全画面
+  ========================= -->
+
+<div class="church-screen">
+
+  <img
+    src="church.png"
+    alt="海底に沈んだ教会"
+  >
+
+  <div class="church-content">
+
+    <h1>THE CHURCH<br>BELOW THE SEA</h1>
+
+    <p>TOEIC LEARNING JOURNEY</p>
+
+    <button id="enterButton" class="story-button">
+      ENTER
+    </button>
+
+
+  </div>
+
+</div>
+
+    <div class="introduction-content">
+
+    <p>
+      あなたは、海底へと沈んだ一人の巡礼者です。<br>
+      かつて栄えていたこの教会には、<br>
+      今もなお、誰にも知られていない秘密が眠っています。<br>
+      <br>
+      先へ進むには、いくつもの試練を越えなければなりません。<br>
+      <br>
+      問題を解き、扉を開き、教会の奥へ進みましょう。
+    </p>
+
+  <p class="journey-title">TOEIC LEARNING JOURNEY</p>
+
+  <button class="start-button story-button">
+    BEGIN YOUR JOURNEY
+  </button>
+
+
+  </div>
+
+<div class="church-home">
+
+  <h1>THE CHURCH</h1>
+
+  <p>Choose your study area</p>
+
+
+  <div class="study-card">
+
+    <button id="chapelButton" class="story-button">
+
+      <span class="card-location">CHAPEL</span>
+
+      <span class="card-title">TOEIC PART 5</span>
+
+      <span class="card-description">
+        Grammar & Vocabulary
+      </span>
+
+      <span id="chapelStatus"></span>
+
+    </button>
+
+  </div>
+
+</div>
+
+<div class="quiz-screen">
+
+  <p class="quiz-location">CHAPEL</p>
+
+  <h1>TOEIC PART 5</h1>
+
+  <p class="stage-number">STAGE 01</p>
+
+
+  <div class="question">
+
+    <p class="question-number">
+      QUESTION 1 / 3
+    </p>
+
+    <p class="question-text">
+      The manager _____ the report
+      before the meeting.
+    </p>
+
+
+    <div class="answer-buttons">
+
+      <button data-answer="A">
+        A. review
+      </button>
+
+      <button data-answer="B">
+        B. reviews
+      </button>
+
+      <button data-answer="C">
+        C. reviewing
+      </button>
+
+      <button data-answer="D">
+        D. reviewed
+      </button>
+
+    </div>
+
+
+    <p id="result"></p>
+
+    <button id="nextButton" class="story-button">
+      NEXT
+    </button>
+
+    <button id="returnButton" class="story-button">
+      RETURN TO THE CHURCH
+    </button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
