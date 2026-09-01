@@ -148,8 +148,6 @@ startButton.addEventListener("click", () => {
 
 });
 
-
-
 // CHAPELボタン
 const chapelButton =
   document.querySelector("#chapelButton");
@@ -157,53 +155,71 @@ const chapelButton =
 const quizScreen =
   document.querySelector(".quiz-screen");
 
-chapelButton.addEventListener("click", () => {
+// CHAPELボタン
+chapelButton.addEventListener("click", async () => {
 
-  // 教会ホームを隠す
-  churchHome.style.display = "none";
+  // JSONから50問全部読み込む
+  const response =
+    await fetch("questions/chapel.json");
 
-  // 問題画面を表示
-  quizScreen.style.display = "block";
+  const allQuestions =
+    await response.json();
+
+
+  // 正解済みの問題を取得
+  const masteredQuestions =
+    JSON.parse(
+      localStorage.getItem("masteredQuestions")
+    ) || [];
+
+
+  // まだ正解していない問題だけ残す
+  const unansweredQuestions =
+    allQuestions.filter(
+      question =>
+        !masteredQuestions.includes(question.id)
+    );
+
+
+  // もう全部正解している場合
+  if (unansweredQuestions.length === 0) {
+
+    alert("All questions have been mastered!");
+
+    return;
+
+  }
+
+
+  // ランダムに並べ替えて、10問だけ取得
+  questions =
+    unansweredQuestions
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
+
+
+  // クイズをリセット
+  currentQuestion = 0;
+  correctAnswers = 0;
+
+
+  churchHome.style.display =
+    "none";
+
+  quizScreen.style.display =
+    "block";
+
+  returnButton.style.display =
+    "none";
+
+
+  showQuestion();
 
 });
 
-const questions = [
+let questions = [];
 
-  {
-    text: "The manager _____ the report before the meeting.",
-    answers: [
-      "A. review",
-      "B. reviews",
-      "C. reviewing",
-      "D. reviewed"
-    ],
-    correct: "D"
-  },
-
-  {
-    text: "Please _____ the document before signing it.",
-    answers: [
-      "A. read",
-      "B. reads",
-      "C. reading",
-      "D. reader"
-    ],
-    correct: "A"
-  },
-
-  {
-    text: "The employees _____ the meeting every Monday.",
-    answers: [
-      "A. attend",
-      "B. attends",
-      "C. attending",
-      "D. attended"
-    ],
-    correct: "A"
-  }
-
-];
-
+let wrongQuestions = [];
 
 let currentQuestion = 0;
 
@@ -230,28 +246,24 @@ const returnButton =
   document.querySelector("#returnButton");
 
 
+
 // 問題を表示する関数
 function showQuestion() {
 
   const question =
     questions[currentQuestion];
 
-
   questionNumber.textContent =
     `QUESTION ${currentQuestion + 1} / ${questions.length}`;
-
 
   questionText.textContent =
     question.text;
 
-
   answerArea.innerHTML = "";
-
 
   result.textContent = "";
 
   nextButton.style.display = "none";
-
 
   question.answers.forEach((answer, index) => {
 
@@ -264,32 +276,123 @@ function showQuestion() {
     button.dataset.answer =
       String.fromCharCode(65 + index);
 
-
     answerArea.appendChild(button);
 
+button.addEventListener("click", () => {
 
-    button.addEventListener("click", () => {
+  // 一度答えたら、すべての選択肢を押せなくする
+  const answerButtons =
+    answerArea.querySelectorAll("button");
 
+  answerButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+
+  // 正解だった場合
+  if (
+    button.dataset.answer ===
+    question.correct
+  ) {
+
+    result.textContent = "Correct!";
+
+    correctAnswers++;
+
+    // 選んだ答えを緑にする
+    button.classList.add("correct");
+
+      // 正解した問題を保存
+  const masteredQuestions =
+    JSON.parse(
+      localStorage.getItem("masteredQuestions")
+    ) || [];
+
+  if (
+    !masteredQuestions.includes(question.id)
+  ) {
+
+    masteredQuestions.push(question.id);
+
+  }
+
+  localStorage.setItem(
+    "masteredQuestions",
+    JSON.stringify(masteredQuestions)
+  );
+
+    // 正解した問題を苦手リストから削除
+    const wrongQuestions =
+      JSON.parse(
+        localStorage.getItem("wrongQuestions")
+      ) || [];
+
+    const updatedWrongQuestions =
+      wrongQuestions.filter(
+        q => q.id !== question.id
+      );
+
+    localStorage.setItem(
+      "wrongQuestions",
+      JSON.stringify(updatedWrongQuestions)
+    );
+
+
+  // 間違えた場合
+  } else {
+
+    result.textContent = "Incorrect.";
+
+    // 選んだ答えを赤にする
+    button.classList.add("incorrect");
+
+    // 正解の選択肢を緑にする
+    answerButtons.forEach(answerButton => {
+
+      if (
+        answerButton.dataset.answer ===
+        question.correct
+      ) {
+
+        answerButton.classList.add("correct");
+
+      }
+
+    });
+
+
+    // 間違えた問題を保存
+    const wrongQuestions =
+      JSON.parse(
+        localStorage.getItem("wrongQuestions")
+      ) || [];
+
+
+    // まだ登録されていない問題だけ追加
     if (
-      button.dataset.answer ===
-      question.correct
+      !wrongQuestions.some(
+        q => q.id === question.id
+      )
     ) {
 
-      result.textContent = "Correct!";
-
-      correctAnswers++;
-
-    } else {
-
-      result.textContent = "Incorrect.";
+      wrongQuestions.push(question);
 
     }
 
 
-      nextButton.style.display =
-        "block";
+    localStorage.setItem(
+      "wrongQuestions",
+      JSON.stringify(wrongQuestions)
+    );
 
-    });
+  }
+
+
+  // 答えを選んだらNEXTを表示
+  nextButton.style.display =
+    "block";
+
+});
 
   });
 
@@ -348,6 +451,69 @@ returnButton.addEventListener("click", () => {
 });
 
 
-// 最初の問題を表示
-showQuestion();
+// REVIEW MISTAKESボタン
+const reviewButton =
+  document.querySelector("#reviewButton");
 
+reviewButton.addEventListener("click", () => {
+
+  const wrongQuestions =
+    JSON.parse(
+      localStorage.getItem("wrongQuestions")
+    ) || [];
+
+  if (wrongQuestions.length === 0) {
+
+    alert("There are no mistakes to review.");
+
+    return;
+
+  }
+
+  questions = wrongQuestions;
+
+  currentQuestion = 0;
+  correctAnswers = 0;
+
+  churchHome.style.display =
+    "none";
+
+  quizScreen.style.display =
+    "block";
+
+  returnButton.style.display =
+    "none";
+
+    showQuestion();
+
+});
+
+// =========================
+// 開発用：教会ホームからスタート
+// URLの最後に ?dev=true を付けた場合のみ有効
+// =========================
+
+const urlParams =
+  new URLSearchParams(window.location.search);
+
+const isDev =
+  urlParams.get("dev") === "true";
+
+if (isDev) {
+
+  // 最初の画面を隠す
+  document.querySelector(".church-screen").style.display =
+    "none";
+
+  // 導入画面を隠す
+  introduction.style.display =
+    "none";
+
+  // 教会ホームを表示
+  churchHome.style.display =
+    "block";
+
+  // クリア状況を更新
+  updateChurchHome();
+
+}

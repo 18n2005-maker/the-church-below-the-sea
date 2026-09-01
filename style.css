@@ -558,9 +558,18 @@ body {
 }
 
 #returnButton {
-  
+
   display: none;
 
   margin: 30px auto 0;
 
+}
+.answer-buttons button.correct {
+  background-color: #6fbf73;
+  color: white;
+}
+
+.answer-buttons button.incorrect {
+  background-color: #d96b6b;
+  color: white;
 }
