@@ -1,13 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>The Church Below the Sea</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="style.css">
 
 </head>
 
@@ -16,32 +21,45 @@
 
 
   <!-- =========================
-       教会の全画面
+       教会の全画面（入口）
   ========================= -->
 
-<div class="church-screen">
+  <div class="church-screen">
 
-  <img
-    src="church.png"
-    alt="海底に沈んだ教会"
-  >
+    <img
+      src="church.png"
+      alt="海底に沈んだ教会"
+    >
 
-  <div class="church-content">
+    <div class="church-content">
 
-    <h1>THE CHURCH<br>BELOW THE SEA</h1>
+      <h1>
+        THE CHURCH<br>
+        BELOW THE SEA
+      </h1>
 
-    <p>TOEIC LEARNING JOURNEY</p>
+      <p>
+        TOEIC LEARNING JOURNEY
+      </p>
 
-    <button id="enterButton" class="story-button">
-      ENTER
-    </button>
+      <button
+        id="enterButton"
+        class="story-button"
+      >
+        ENTER
+      </button>
 
+    </div>
 
   </div>
 
-</div>
 
-    <div class="introduction-content">
+
+  <!-- =========================
+       イントロダクション
+  ========================= -->
+
+  <div class="introduction-content">
 
     <p>
       あなたは、海底へと沈んだ一人の巡礼者です。<br>
@@ -53,103 +71,187 @@
       問題を解き、扉を開き、教会の奥へ進みましょう。
     </p>
 
-  <p class="journey-title">TOEIC LEARNING JOURNEY</p>
+    <p class="journey-title">
+      TOEIC LEARNING JOURNEY
+    </p>
 
-  <button class="start-button story-button">
-    BEGIN YOUR JOURNEY
-  </button>
-
-
-  </div>
-
-<div class="church-home">
-
-  <h1>THE CHURCH</h1>
-
-  <p>Choose your study area</p>
-
-
-  <div class="study-card">
-
-    <button id="chapelButton" class="story-button">
-
-      <span class="card-location">CHAPEL</span>
-
-      <span class="card-title">TOEIC PART 5</span>
-
-      <span class="card-description">
-        Grammar & Vocabulary
-      </span>
-
-      <span id="chapelStatus"></span>
-
+    <button
+      class="start-button story-button"
+    >
+      BEGIN YOUR JOURNEY
     </button>
 
   </div>
 
-</div>
-
-<div class="quiz-screen">
-
-  <p class="quiz-location">CHAPEL</p>
-
-  <h1>TOEIC PART 5</h1>
-
-  <p class="stage-number">STAGE 01</p>
 
 
-  <div class="question">
+  <!-- =========================
+       教会内部
+  ========================= -->
 
-    <p class="question-number">
-      QUESTION 1 / 3
-    </p>
+  <div class="church-home">
 
-    <p class="question-text">
-      The manager _____ the report
-      before the meeting.
+    <h1>
+      THE CHURCH
+    </h1>
+
+    <p>
+      Choose your study area
     </p>
 
 
-    <div class="answer-buttons">
+    <!-- =========================
+         LISTENING
+    ========================= -->
 
-      <button data-answer="A">
-        A. review
-      </button>
+    <section class="study-section">
 
-      <button data-answer="B">
-        B. reviews
-      </button>
-
-      <button data-answer="C">
-        C. reviewing
-      </button>
-
-      <button data-answer="D">
-        D. reviewed
-      </button>
-
-    </div>
+      <h2>
+        LISTENING
+      </h2>
 
 
-    <p id="result"></p>
+      <div class="study-cards">
 
-    <button id="nextButton" class="story-button">
-      NEXT
-    </button>
 
-    <button id="returnButton" class="story-button">
-      RETURN TO THE CHURCH
-    </button>
+        <!-- LIBRARY / PART 2 -->
 
-    <button id="reviewButton" class="story-button">
-      REVIEW MISTAKES
-    </button>
+        <div class="study-card">
+
+          <a
+            href="part2.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              LIBRARY
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 2
+            </span>
+
+            <span class="card-description">
+              Question & Response
+            </span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- CATHEDRAL / PART 3 -->
+
+        <div class="study-card">
+
+          <a
+            href="part3.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              CATHEDRAL
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 3
+            </span>
+
+            <span class="card-description">
+              Conversations
+            </span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- BELL TOWER / PART 4 -->
+
+        <div class="study-card">
+
+          <a
+            href="part4.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              BELL TOWER
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 4
+            </span>
+
+            <span class="card-description">
+              Talks
+            </span>
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         READING
+    ========================= -->
+
+    <section class="study-section">
+
+      <h2>
+        READING
+      </h2>
+
+
+      <div class="study-cards">
+
+
+        <!-- CHAPEL / PART 5 -->
+
+        <div class="study-card">
+
+          <a
+            href="part5.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              CHAPEL
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 5
+            </span>
+
+            <span class="card-description">
+              Grammar & Vocabulary
+            </span>
+
+            <span id="chapelStatus"></span>
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
 
   </div>
 
-</div>
 
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 
 </body>
 

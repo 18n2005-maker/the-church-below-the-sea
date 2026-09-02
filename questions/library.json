@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "question": "Where is the meeting room?",
+    "choices": [
+      "It's on the second floor.",
+      "At three o'clock.",
+      "Yes, I attended it."
+    ],
+    "answer": 0,
+    "explanation": "The question asks for the location of the meeting room, so 'It's on the second floor.' is the appropriate response."
+  },
+  {
+    "id": 2,
+    "question": "When will the report be finished?",
+    "choices": [
+      "In the accounting department.",
+      "By Friday afternoon.",
+      "Mr. Smith wrote it."
+    ],
+    "answer": 1,
+    "explanation": "The question asks when the report will be finished, so 'By Friday afternoon.' is the appropriate response."
+  },
+  {
+    "id": 3,
+    "question": "Did you reserve a table for us?",
+    "choices": [
+      "Yes, for seven people.",
+      "At the Italian restaurant.",
+      "It was very delicious."
+    ],
+    "answer": 0,
+    "explanation": "The question begins with 'Did you...?', so a yes/no response is appropriate. 'Yes, for seven people.' answers the question."
+  },
+  {
+    "id": 4,
+    "question": "Why is the elevator out of service?",
+    "choices": [
+      "On the third floor.",
+      "Because it is being repaired.",
+      "I'll take the stairs."
+    ],
+    "answer": 1,
+    "explanation": "The question asks why the elevator is out of service, so a reason is required."
+  },
+  {
+    "id": 5,
+    "question": "Who is going to lead the meeting?",
+    "choices": [
+      "At ten o'clock.",
+      "In the conference room.",
+      "Ms. Brown from Sales."
+    ],
+    "answer": 2,
+    "explanation": "The question asks who will lead the meeting, so the answer should identify a person."
+  }
+]
