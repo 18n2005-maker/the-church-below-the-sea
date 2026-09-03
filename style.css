@@ -667,3 +667,38 @@ body {
   font-size: 14px;
   opacity: 0.8;
 }
+
+
+/* =========================
+   回答タイマー
+========================= */
+
+.answer-timer {
+  width: 600px;
+  max-width: 90%;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.timer-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#timerBar {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  transition: width 1s linear;
+}
+
+#timerText {
+  margin: 10px 0 0;
+  font-size: 14px;
+  letter-spacing: 3px;
+  opacity: 0.8;
+}
+

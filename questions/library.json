@@ -1,57 +1,102 @@
 [
-  {
-    "id": 1,
-    "question": "Where is the meeting room?",
-    "choices": [
-      "It's on the second floor.",
-      "At three o'clock.",
-      "Yes, I attended it."
-    ],
-    "answer": 0,
-    "explanation": "The question asks for the location of the meeting room, so 'It's on the second floor.' is the appropriate response."
-  },
-  {
-    "id": 2,
-    "question": "When will the report be finished?",
-    "choices": [
-      "In the accounting department.",
-      "By Friday afternoon.",
-      "Mr. Smith wrote it."
-    ],
-    "answer": 1,
-    "explanation": "The question asks when the report will be finished, so 'By Friday afternoon.' is the appropriate response."
-  },
-  {
-    "id": 3,
-    "question": "Did you reserve a table for us?",
-    "choices": [
-      "Yes, for seven people.",
-      "At the Italian restaurant.",
-      "It was very delicious."
-    ],
-    "answer": 0,
-    "explanation": "The question begins with 'Did you...?', so a yes/no response is appropriate. 'Yes, for seven people.' answers the question."
-  },
-  {
-    "id": 4,
-    "question": "Why is the elevator out of service?",
-    "choices": [
-      "On the third floor.",
-      "Because it is being repaired.",
-      "I'll take the stairs."
-    ],
-    "answer": 1,
-    "explanation": "The question asks why the elevator is out of service, so a reason is required."
-  },
-  {
-    "id": 5,
-    "question": "Who is going to lead the meeting?",
-    "choices": [
-      "At ten o'clock.",
-      "In the conference room.",
-      "Ms. Brown from Sales."
-    ],
-    "answer": 2,
-    "explanation": "The question asks who will lead the meeting, so the answer should identify a person."
-  }
+{
+"id": 1,
+"text": "Why hasn't the shipment arrived yet?",
+"answers": [
+"It was delayed at the distribution center.",
+"By the end of this week.",
+"I'll send the invoice tomorrow."
+],
+"correct": "A"
+},
+{
+"id": 2,
+"text": "Could you let me know whether the conference room has been reserved?",
+"answers": [
+"It's on the second floor.",
+"I'll check with the receptionist.",
+"The conference starts at nine."
+],
+"correct": "B"
+},
+{
+"id": 3,
+"text": "Who approved the revised budget proposal?",
+"answers": [
+"It was considerably higher than expected.",
+"The finance director did.",
+"We revised it last Friday."
+],
+"correct": "B"
+},
+{
+"id": 4,
+"text": "When are we supposed to submit the expense reports?",
+"answers": [
+"They were submitted electronically.",
+"No later than the fifteenth.",
+"I haven't reviewed the expenses."
+],
+"correct": "B"
+},
+{
+"id": 5,
+"text": "Didn't you say that the maintenance work would be completed by today?",
+"answers": [
+"Yes, but the contractor ran into an unexpected problem.",
+"The maintenance staff works on weekends.",
+"I completed the training yesterday."
+],
+"correct": "A"
+},
+{
+"id": 6,
+"text": "How do you think we should respond to the client's complaint?",
+"answers": [
+"I think we should offer a partial refund.",
+"The client contacted us yesterday.",
+"It was delivered to the wrong address."
+],
+"correct": "A"
+},
+{
+"id": 7,
+"text": "Wouldn't it be more convenient to hold the meeting online?",
+"answers": [
+"The meeting room is already available.",
+"That's what I was thinking.",
+"We discussed the proposal yesterday."
+],
+"correct": "B"
+},
+{
+"id": 8,
+"text": "Why don't we postpone the product launch until next month?",
+"answers": [
+"The new model has received positive reviews.",
+"Because we still need to finalize the marketing materials.",
+"It was launched in several overseas markets."
+],
+"correct": "B"
+},
+{
+"id": 9,
+"text": "You haven't seen the latest version of the contract, have you?",
+"answers": [
+"No, could you forward it to me?",
+"The contract expires at the end of June.",
+"Yes, the legal department drafted it."
+],
+"correct": "A"
+},
+{
+"id": 10,
+"text": "Where should I leave these documents after you've finished reviewing them?",
+"answers": [
+"On Ms. Tanaka's desk, if you don't mind.",
+"I reviewed the documents this morning.",
+"They're related to the annual report."
+],
+"correct": "A"
+}
 ]

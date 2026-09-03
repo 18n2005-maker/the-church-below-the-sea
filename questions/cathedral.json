@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "conversation": "Man: Have you finished the report for the meeting?\nWoman: Not yet. I'm still waiting for the sales figures.\nMan: I see. The meeting isn't until three, so there's still some time.",
+    "text": "What is the woman waiting for?",
+    "answers": [
+      "A sales report.",
+      "Some financial data.",
+      "The meeting schedule.",
+      "A new assignment."
+    ],
+    "correct": "B"
+  }
+]
