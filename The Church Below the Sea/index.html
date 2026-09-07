@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>The Church Below the Sea</title>
+
+  <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       教会の全画面（入口）
+  ========================= -->
+
+  <div class="church-screen">
+
+    <img
+      src="church.png"
+      alt="海底に沈んだ教会"
+    >
+
+    <div class="church-content">
+
+      <h1>
+        THE CHURCH<br>
+        BELOW THE SEA
+      </h1>
+
+      <p>
+        TOEIC LEARNING JOURNEY
+      </p>
+
+      <button
+        id="enterButton"
+        class="story-button"
+      >
+        ENTER
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       イントロダクション
+  ========================= -->
+
+  <div class="introduction-content">
+
+    <p>
+      あなたは、海底へと沈んだ一人の巡礼者です。<br>
+      かつて栄えていたこの教会には、<br>
+      今もなお、誰にも知られていない秘密が眠っています。<br>
+      <br>
+      先へ進むには、いくつもの試練を越えなければなりません。<br>
+      <br>
+      問題を解き、扉を開き、教会の奥へ進みましょう。
+    </p>
+
+    <p class="journey-title">
+      TOEIC LEARNING JOURNEY
+    </p>
+
+    <button
+      class="start-button story-button"
+    >
+      BEGIN YOUR JOURNEY
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       教会内部
+  ========================= -->
+
+  <div class="church-home">
+
+    <h1>
+      THE CHURCH
+    </h1>
+
+    <p>
+      Choose your study area
+    </p>
+
+
+    <!-- =========================
+         LISTENING
+    ========================= -->
+
+    <section class="study-section">
+
+      <h2>
+        LISTENING
+      </h2>
+
+
+      <div class="study-cards">
+
+
+        <!-- LIBRARY / PART 2 -->
+
+        <div class="study-card">
+
+          <a
+            href="part2.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              LIBRARY
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 2
+            </span>
+
+            <span class="card-description">
+              Question & Response
+            </span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- CATHEDRAL / PART 3 -->
+
+        <div class="study-card">
+
+          <a
+            href="part3.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              CATHEDRAL
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 3
+            </span>
+
+            <span class="card-description">
+              Conversations
+            </span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- BELL TOWER / PART 4 -->
+
+        <div class="study-card">
+
+          <a
+            href="part4.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              BELL TOWER
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 4
+            </span>
+
+            <span class="card-description">
+              Talks
+            </span>
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         READING
+    ========================= -->
+
+    <section class="study-section">
+
+      <h2>
+        READING
+      </h2>
+
+
+      <div class="study-cards">
+
+
+        <!-- CHAPEL / PART 5 -->
+
+        <div class="study-card">
+
+          <a
+            href="part5.html"
+            class="story-button"
+          >
+
+            <span class="card-location">
+              CHAPEL
+            </span>
+
+            <span class="card-title">
+              TOEIC PART 5
+            </span>
+
+            <span class="card-description">
+              Grammar & Vocabulary
+            </span>
+
+            <span id="chapelStatus"></span>
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

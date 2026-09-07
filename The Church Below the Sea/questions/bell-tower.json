@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "text": "Good morning, everyone. I'd like to tell you about some changes to our office schedule. Starting next Monday, our office will open at 9 a.m. instead of 8:30. Please read the email I sent this morning for more details.",
+    "questions": [
+      {
+        "text": "What is the speaker mainly talking about?",
+        "answers": [
+          "A new office schedule",
+          "A company meeting",
+          "A new employee",
+          "A business trip"
+        ],
+        "correct": "A"
+      },
+      {
+        "text": "When will the changes take effect?",
+        "answers": [
+          "Tomorrow",
+          "Next Monday",
+          "Next month",
+          "Next year"
+        ],
+        "correct": "B"
+      },
+      {
+        "text": "What does the speaker ask employees to do?",
+        "answers": [
+          "Contact the manager",
+          "Change their schedules",
+          "Read an email",
+          "Attend a meeting"
+        ],
+        "correct": "C"
+      }
+    ]
+  }
+]

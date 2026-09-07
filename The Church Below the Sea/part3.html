@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cathedral | The Church Below the Sea</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- =========================
+       TOEIC Part 3
+  ========================= -->
+
+  <div
+    class="quiz-screen"
+    data-question-file="questions/cathedral.json"
+  >
+
+    <p class="quiz-location">
+      CATHEDRAL
+    </p>
+
+    <h1>
+      TOEIC PART 3
+    </h1>
+
+    <p class="stage-number">
+      STAGE 03
+    </p>
+
+
+    <p class="mastery-count">
+
+      <span id="totalCount">
+        0
+      </span>問中
+
+      <span id="masteryCount">
+        0
+      </span>問 MASTERED /
+
+      残り
+
+      <span id="remainingCount">
+        0
+      </span>問
+
+    </p>
+    
+
+    <div class="question">
+
+      <button id="startButton" class="story-button">
+        START
+      </button>
+
+      <p class="question-number">
+        QUESTION 1 / 10
+      </p>
+
+      <div class="answer-timer">
+
+        <div class="timer-bar">
+          <div id="timerBar"></div>
+        </div>
+
+        <p id="timerText">
+          10s
+        </p>
+
+      </div>
+
+      <p class="question-text"></p>
+
+      <div class="answer-buttons">
+      </div>
+
+      <p id="result"></p>
+
+      <button id="nextButton" class="story-button">
+        NEXT
+      </button>
+
+      <a href="index.html" id="returnButton" class="story-button">
+        RETURN TO THE CHURCH
+      </a>
+
+      <button id="reviewButton" class="story-button">
+        REVIEW MISTAKES
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="quizjs/quiz-common.js"></script>
+  <script src="quizjs/quiz-part3.js"></script>
+
+</body>
+
+</html>

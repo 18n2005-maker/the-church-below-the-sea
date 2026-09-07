@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "text": "The marketing team _____ the proposal before submitting it to the director.",
+    "answers": [
+      "A. review",
+      "B. reviews",
+      "C. reviewed",
+      "D. reviewing"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 2,
+    "text": "All employees are required _____ their identification cards when entering the building.",
+    "answers": [
+      "A. show",
+      "B. showing",
+      "C. to show",
+      "D. shown"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 3,
+    "text": "The new software is considerably _____ than the previous version.",
+    "answers": [
+      "A. efficient",
+      "B. more efficient",
+      "C. most efficient",
+      "D. efficiently"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 4,
+    "text": "Ms. Carter has worked at the company _____ 2019.",
+    "answers": [
+      "A. for",
+      "B. during",
+      "C. since",
+      "D. while"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 5,
+    "text": "The conference room must be _____ before the presentation begins.",
+    "answers": [
+      "A. arrange",
+      "B. arranging",
+      "C. arranged",
+      "D. arrangement"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 6,
+    "text": "The manager asked the staff to _____ the deadline carefully.",
+    "answers": [
+      "A. consideration",
+      "B. consider",
+      "C. considerate",
+      "D. considerably"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 7,
+    "text": "The company will postpone the meeting _____ the director returns from London.",
+    "answers": [
+      "A. until",
+      "B. during",
+      "C. despite",
+      "D. among"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 8,
+    "text": "Mr. Wilson was unable to attend the meeting because he _____ with a client at the time.",
+    "answers": [
+      "A. met",
+      "B. meets",
+      "C. was meeting",
+      "D. has met"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 9,
+    "text": "The factory has increased production in response to _____ demand.",
+    "answers": [
+      "A. rise",
+      "B. rising",
+      "C. risen",
+      "D. rises"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 10,
+    "text": "Please submit the completed form _____ Friday afternoon.",
+    "answers": [
+      "A. by",
+      "B. since",
+      "C. from",
+      "D. between"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 11,
+    "text": "The director recommended that the company _____ its hiring policy.",
+    "answers": [
+      "A. revise",
+      "B. revises",
+      "C. revised",
+      "D. revising"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 12,
+    "text": "The shipment was delayed _____ severe weather conditions.",
+    "answers": [
+      "A. because",
+      "B. because of",
+      "C. although",
+      "D. despite of"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 13,
+    "text": "Employees should avoid _____ confidential information with unauthorized individuals.",
+    "answers": [
+      "A. share",
+      "B. shared",
+      "C. sharing",
+      "D. to sharing"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 14,
+    "text": "The new branch is expected _____ next month.",
+    "answers": [
+      "A. open",
+      "B. opening",
+      "C. to open",
+      "D. opened"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 15,
+    "text": "The sales representative spoke _____ about the benefits of the new product.",
+    "answers": [
+      "A. enthusiasm",
+      "B. enthusiastic",
+      "C. enthusiastically",
+      "D. more enthusiastic"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 16,
+    "text": "The documents _____ by the legal department yesterday.",
+    "answers": [
+      "A. reviewed",
+      "B. were reviewed",
+      "C. reviewing",
+      "D. have reviewing"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 17,
+    "text": "We need to hire additional staff _____ the workload continues to increase.",
+    "answers": [
+      "A. unless",
+      "B. as",
+      "C. despite",
+      "D. whereas"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 18,
+    "text": "The company offers employees a variety of benefits, _____ health insurance and paid vacation.",
+    "answers": [
+      "A. include",
+      "B. included",
+      "C. including",
+      "D. includes"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 19,
+    "text": "Mr. Lee is responsible for _____ the company's overseas accounts.",
+    "answers": [
+      "A. manage",
+      "B. managed",
+      "C. managing",
+      "D. management"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 20,
+    "text": "The manager will make a final decision after _____ all the available options.",
+    "answers": [
+      "A. consider",
+      "B. considered",
+      "C. considering",
+      "D. consideration"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 21,
+    "text": "The office renovation was completed much _____ than expected.",
+    "answers": [
+      "A. early",
+      "B. earlier",
+      "C. earliest",
+      "D. earliness"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 22,
+    "text": "The employee _____ performance has improved significantly will receive a bonus.",
+    "answers": [
+      "A. who",
+      "B. whose",
+      "C. whom",
+      "D. which"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 23,
+    "text": "The company decided to expand its operations _____ the growing demand for its products.",
+    "answers": [
+      "A. due to",
+      "B. even though",
+      "C. instead",
+      "D. unless"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 24,
+    "text": "Neither the manager nor the assistants _____ available to answer the questions.",
+    "answers": [
+      "A. was",
+      "B. were",
+      "C. be",
+      "D. being"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 25,
+    "text": "The company has not yet decided _____ to open another branch.",
+    "answers": [
+      "A. whether",
+      "B. what",
+      "C. which",
+      "D. who"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 26,
+    "text": "The training session was designed to help employees work more _____.",
+    "answers": [
+      "A. efficient",
+      "B. efficiency",
+      "C. efficiently",
+      "D. efficiencies"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 27,
+    "text": "Please contact the receptionist if you have _____ questions about the schedule.",
+    "answers": [
+      "A. any",
+      "B. much",
+      "C. every",
+      "D. another"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 28,
+    "text": "The manager was impressed by how _____ the new employee handled the situation.",
+    "answers": [
+      "A. professional",
+      "B. professionally",
+      "C. profession",
+      "D. professionalism"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 29,
+    "text": "The company plans to reduce costs without _____ the quality of its products.",
+    "answers": [
+      "A. affect",
+      "B. affected",
+      "C. affecting",
+      "D. affects"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 30,
+    "text": "The report contains several recommendations _____ improving customer satisfaction.",
+    "answers": [
+      "A. for",
+      "B. to",
+      "C. at",
+      "D. with"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 31,
+    "text": "By the time the meeting started, most participants _____ their seats.",
+    "answers": [
+      "A. take",
+      "B. took",
+      "C. had taken",
+      "D. have taken"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 32,
+    "text": "The restaurant received excellent reviews _____ its convenient location.",
+    "answers": [
+      "A. because",
+      "B. because of",
+      "C. although",
+      "D. while"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 33,
+    "text": "The information provided in the brochure is not _____ enough to make a decision.",
+    "answers": [
+      "A. detail",
+      "B. detailed",
+      "C. detailing",
+      "D. details"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 34,
+    "text": "The project must be completed on time, _____ unexpected problems arise.",
+    "answers": [
+      "A. even if",
+      "B. because of",
+      "C. in spite",
+      "D. due"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 35,
+    "text": "Ms. Brown has extensive experience _____ international clients.",
+    "answers": [
+      "A. work",
+      "B. worked",
+      "C. working with",
+      "D. to working"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 36,
+    "text": "The company is looking for candidates who are capable _____ working independently.",
+    "answers": [
+      "A. at",
+      "B. of",
+      "C. to",
+      "D. with"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 37,
+    "text": "The number of online orders has increased _____ since last year.",
+    "answers": [
+      "A. significant",
+      "B. significance",
+      "C. significantly",
+      "D. signify"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 38,
+    "text": "The CEO decided to attend the event _____ the importance of maintaining good business relationships.",
+    "answers": [
+      "A. recognize",
+      "B. recognizing",
+      "C. recognized",
+      "D. recognition"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 39,
+    "text": "The office will remain closed _____ Monday due to maintenance work.",
+    "answers": [
+      "A. until",
+      "B. during",
+      "C. since",
+      "D. among"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 40,
+    "text": "The new policy applies to all employees, regardless of _____ position.",
+    "answers": [
+      "A. they",
+      "B. them",
+      "C. their",
+      "D. theirs"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 41,
+    "text": "The manager asked whether the report _____ completed by Friday.",
+    "answers": [
+      "A. can be",
+      "B. could be",
+      "C. could",
+      "D. can"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 42,
+    "text": "The company is considering _____ its headquarters to a larger building.",
+    "answers": [
+      "A. move",
+      "B. moved",
+      "C. moving",
+      "D. to moving"
+    ],
+    "correct": "C"
+  },
+  {
+    "id": 43,
+    "text": "The presentation was so _____ that several clients requested additional information.",
+    "answers": [
+      "A. persuade",
+      "B. persuasive",
+      "C. persuasively",
+      "D. persuasion"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 44,
+    "text": "Employees who wish to attend the seminar must register _____ advance.",
+    "answers": [
+      "A. in",
+      "B. on",
+      "C. at",
+      "D. for"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 45,
+    "text": "The store will offer special discounts _____ the holiday season.",
+    "answers": [
+      "A. throughout",
+      "B. between",
+      "C. among",
+      "D. since"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 46,
+    "text": "The consultant suggested _____ the meeting until next week.",
+    "answers": [
+      "A. postpone",
+      "B. postponing",
+      "C. to postpone",
+      "D. postponed"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 47,
+    "text": "The equipment should be inspected regularly to ensure that it is operating _____.",
+    "answers": [
+      "A. proper",
+      "B. properly",
+      "C. property",
+      "D. propriety"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 48,
+    "text": "The manager praised the employees for completing the project ahead _____ schedule.",
+    "answers": [
+      "A. of",
+      "B. from",
+      "C. by",
+      "D. with"
+    ],
+    "correct": "A"
+  },
+  {
+    "id": 49,
+    "text": "_____ the high cost, the company decided to proceed with the project.",
+    "answers": [
+      "A. Although",
+      "B. Despite",
+      "C. Because",
+      "D. Unless"
+    ],
+    "correct": "B"
+  },
+  {
+    "id": 50,
+    "text": "The new system will improve communication between departments by allowing employees to share information more _____.",
+    "answers": [
+      "A. effective",
+      "B. effectiveness",
+      "C. effectively",
+      "D. effects"
+    ],
+    "correct": "C"
+  }
+]
