@@ -1,14 +1,59 @@
 [
   {
     "id": 1,
-    "conversation": "Man: Have you finished the report for the meeting?\nWoman: Not yet. I'm still waiting for the sales figures.\nMan: I see. The meeting isn't until three, so there's still some time.",
-    "text": "What is the woman waiting for?",
-    "answers": [
-      "A sales report.",
-      "Some financial data.",
-      "The meeting schedule.",
-      "A new assignment."
+    "conversation": [
+      {
+        "speaker": "Woman",
+        "text": "Hi, Daniel. Have you had a chance to look at the new schedule for next week's conference?"
+      },
+      {
+        "speaker": "Man",
+        "text": "Not yet. I was planning to review it this afternoon."
+      },
+      {
+        "speaker": "Woman",
+        "text": "There's been a change to the presentation schedule. Our session has been moved to Thursday morning."
+      },
+      {
+        "speaker": "Man",
+        "text": "Thursday morning? That's earlier than I expected."
+      },
+      {
+        "speaker": "Woman",
+        "text": "Yes. I'll send you the updated schedule by e-mail."
+      }
     ],
-    "correct": "B"
+    "questions": [
+      {
+        "text": "What are the speakers mainly discussing?",
+        "answers": [
+          "A conference schedule",
+          "A presentation topic",
+          "An e-mail problem",
+          "A business trip"
+        ],
+        "correct": "A"
+      },
+      {
+        "text": "When will the man's presentation take place?",
+        "answers": [
+          "Monday afternoon",
+          "Tuesday morning",
+          "Thursday morning",
+          "Thursday afternoon"
+        ],
+        "correct": "C"
+      },
+      {
+        "text": "What does the woman say she will do?",
+        "answers": [
+          "Change the presentation topic",
+          "Send an updated schedule",
+          "Contact the conference organizer",
+          "Prepare a new presentation"
+        ],
+        "correct": "B"
+      }
+    ]
   }
 ]

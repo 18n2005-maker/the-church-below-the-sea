@@ -2,16 +2,22 @@
 <html lang="ja">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>bell-tower | The Church Below the Sea</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+  <title>Bell Tower | The Church Below the Sea</title>
+
+  <link rel="stylesheet"
+        href="style.css">
 
 </head>
 
+
 <body>
+
 
   <!-- =========================
        TOEIC Part 4
@@ -23,7 +29,7 @@
   >
 
     <p class="quiz-location">
-      bell-tower
+      BELL TOWER
     </p>
 
     <h1>
@@ -34,40 +40,109 @@
       STAGE 04
     </p>
 
+
     <p class="mastery-count">
-      <span id="totalCount">0</span>問中
-      <span id="masteryCount">0</span>問 MASTERED /
-      残り<span id="remainingCount">0</span>問
+
+      <span id="totalCount">
+        0
+      </span>問中
+
+      <span id="masteryCount">
+        0
+      </span>問 MASTERED /
+
+      残り
+
+      <span id="remainingCount">
+        0
+      </span>問
+
     </p>
+
 
     <div class="question">
 
+
+      <!-- =========================
+           START
+      ========================= -->
+
+      <button
+        id="startButton"
+        class="story-button"
+      >
+        START
+      </button>
+
+
+      <!-- =========================
+           問題番号
+      ========================= -->
+
       <p class="question-number">
-        QUESTION 1 / 3
+        QUESTION 1 / 10
       </p>
 
+
+      <!-- =========================
+           問題文
+      ========================= -->
+
       <p class="question-text"></p>
+
+
+      <!-- =========================
+           回答
+      ========================= -->
 
       <div class="answer-buttons">
       </div>
 
+
       <p id="result"></p>
 
-      <button id="nextButton" class="story-button">
+
+      <!-- =========================
+           NEXT
+      ========================= -->
+
+      <button
+        id="nextButton"
+        class="story-button"
+      >
         NEXT
       </button>
 
-      <a href="index.html" id="returnButton" class="story-button">
+
+      <!-- =========================
+           RETURN
+      ========================= -->
+
+      <a
+        href="index.html#churchHome"
+        id="returnButton"
+        class="story-button"
+      >
         RETURN TO THE CHURCH
       </a>
 
-      <button id="reviewButton" class="story-button">
+
+      <!-- =========================
+           REVIEW
+      ========================= -->
+
+      <button
+        id="reviewButton"
+        class="story-button"
+      >
         REVIEW MISTAKES
       </button>
+
 
     </div>
 
   </div>
+
 
   <script src="quizjs/quiz-common.js"></script>
   <script src="quizjs/quiz-part4.js"></script>

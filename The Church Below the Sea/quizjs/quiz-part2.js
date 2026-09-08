@@ -47,102 +47,24 @@ window.setupPartQuestion =
     hideAnswerTimer();
 
 
-    // =========================
-    // 古いPLAYボタンを削除
-    // =========================
+// =========================
+// PLAYボタン
+// =========================
 
-    const oldAudioArea =
-      document.querySelector(
-        ".audio-button-area"
-      );
-
-    if (oldAudioArea) {
-
-      oldAudioArea.remove();
-
+const audioArea =
+  createPlayButton(
+    question.text,
+    () => {
+      showAnswerTimer();
+      startAnswerTimer();
     }
+  );
 
+// PLAYボタンを配置
+answerArea.before(audioArea);
 
-    // =========================
-    // PLAYボタン
-    // =========================
-
-    const audioArea =
-      document.createElement(
-        "div"
-      );
-
-    audioArea.classList.add(
-      "audio-button-area"
-    );
-
-
-    const playButton =
-      document.createElement(
-        "button"
-      );
-
-    playButton.textContent =
-      "▶ PLAY";
-
-    playButton.classList.add(
-      "story-button"
-    );
-
-
-    // =========================
-    // PLAY
-    // =========================
-
-    playButton.addEventListener(
-      "click",
-      () => {
-
-        // PLAYボタンを無効化
-        playButton.disabled =
-          true;
-
-
-        // 音声再生
-        playSpeech(
-          question.text,
-          () => {
-
-            // =========================
-            // 音声終了
-            // =========================
-
-            showAnswerTimer();
-
-            startAnswerTimer();
-
-          }
-        );
-
-      }
-    );
-
-
-    audioArea.appendChild(
-      playButton
-    );
-
-
-    // =========================
-    // PLAYボタンを配置
-    // =========================
-
-    answerArea.before(
-      audioArea
-    );
-
-
-    // =========================
-    // 選択肢表示
-    // =========================
-
-    answerArea.style.display =
-      "block";
+// 選択肢表示
+answerArea.style.display = "block";
 
   };
 
