@@ -981,7 +981,16 @@ function answerQuestion(
     result.textContent =
       "Correct!";
 
+    if (
+    window.handlePart2Answer
+  ) {
 
+    window.handlePart2Answer(
+      question,
+      true
+    );
+
+  }
     selectedButton.classList.add(
       "correct"
     );
@@ -1008,10 +1017,20 @@ function answerQuestion(
 
   else {
 
-    result.textContent =
-      "Incorrect.";
+  result.textContent =
+    "Incorrect.";
 
 
+  if (
+    window.handlePart2Answer
+  ) {
+
+    window.handlePart2Answer(
+      question,
+      false
+    );
+
+  }
     selectedButton.classList.add(
       "incorrect"
     );
@@ -1254,52 +1273,33 @@ function showQuestion() {
 // NEXT
 // ==================================================
 
-nextButton.addEventListener(
-  "click",
-  () => {
+if (nextButton) {
+  nextButton.addEventListener(
+    "click",
+    () => {
+      if (window.handleCustomNext) {
+        const handled =
+          window.handleCustomNext();
 
-    stopAnswerTimer();
-
-    stopSpeech();
-
-
-    // Part専用NEXT
-    if (
-      window.handleCustomNext
-    ) {
-
-      const handled =
-        window.handleCustomNext();
-
-
-      if (handled) {
-
-        return;
-
+        if (handled) {
+          return;
+        }
       }
 
-    }
+      currentQuestion++;
 
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion <
-      questions.length
-    ) {
+      if (
+        currentQuestion >=
+        questions.length
+      ) {
+        showStageComplete();
+        return;
+      }
 
       showQuestion();
-
-      return;
-
     }
-
-
-    showStageComplete();
-
-  }
-);
+  );
+}
 
 
 // ==================================================
@@ -1618,110 +1618,105 @@ function showStageCleared() {
 // REVIEW MISTAKES
 // ==================================================
 
-reviewButton.addEventListener(
-  "click",
-  () => {
+if (reviewButton) {
 
-    stopAnswerTimer();
+  reviewButton.addEventListener(
+    "click",
+    () => {
 
-    stopSpeech();
+      stopAnswerTimer();
 
+      stopSpeech();
 
-    const mistakes =
-      JSON.parse(
-        localStorage.getItem(
-          "mistakes"
-        )
-      ) || [];
-
-
-    const stageMistakes =
-      mistakes.filter(
-        mistake =>
-          typeof mistake.key === "string" &&
-          mistake.key.startsWith(
-            `${stageName}-`
+      const mistakes =
+        JSON.parse(
+          localStorage.getItem(
+            "mistakes"
           )
-      );
+        ) || [];
 
-
-    if (
-      stageMistakes.length === 0
-    ) {
-
-      alert(
-        "There are no mistakes to review."
-      );
-
-      return;
-
-    }
-
-
-    reviewMode =
-      true;
-
-
-    // --------------------------------
-    // Part 3
-    // --------------------------------
-
-    if (
-      stageName ===
-      "cathedral"
-    ) {
-
-      questions =
-        stageMistakes.map(
-          mistake => {
-
-            return {
-
-              id:
-                mistake.part3SetId,
-
-              conversation:
-                mistake.conversation,
-
-              questions: [
-                mistake.question
-              ]
-
-            };
-
-          }
-        );
-
-    }
-
-
-    // --------------------------------
-    // 通常Part
-    // --------------------------------
-
-    else {
-
-      questions =
-        stageMistakes.map(
+      const stageMistakes =
+        mistakes.filter(
           mistake =>
-            mistake.question
+            typeof mistake.key === "string" &&
+            mistake.key.startsWith(
+              `${stageName}-`
+            )
         );
 
+      if (
+        stageMistakes.length === 0
+      ) {
+
+        alert(
+          "There are no mistakes to review."
+        );
+
+        return;
+
+      }
+
+      reviewMode =
+        true;
+
+      // --------------------------------
+      // Part 3
+      // --------------------------------
+
+      if (
+        stageName ===
+        "cathedral"
+      ) {
+
+        questions =
+          stageMistakes.map(
+            mistake => {
+
+              return {
+
+                id:
+                  mistake.part3SetId,
+
+                conversation:
+                  mistake.conversation,
+
+                questions: [
+                  mistake.question
+                ]
+
+              };
+
+            }
+          );
+
+      }
+
+      // --------------------------------
+      // 通常Part
+      // --------------------------------
+
+      else {
+
+        questions =
+          stageMistakes.map(
+            mistake =>
+              mistake.question
+          );
+
+      }
+
+      currentQuestion =
+        0;
+
+      correctAnswers =
+        0;
+
+      showQuestion();
+
     }
+  );
 
-
-    currentQuestion =
-      0;
-
-
-    correctAnswers =
-      0;
-
-
-    showQuestion();
-
-  }
-);
+}
 
 
 // ==================================================
@@ -1746,6 +1741,22 @@ async function loadQuestions() {
     const allQuestions =
       await response.json();
 
+      // =========================
+      // Part 6専用読み込み
+      // =========================
+
+      if (
+        stageName === "sanctuary" &&
+        window.loadPart6Questions
+      ) {
+
+        await window.loadPart6Questions(
+          allQuestions
+        );
+
+        return;
+
+      }
 
     // =========================
     // Part 3
@@ -1962,6 +1973,8 @@ async function loadQuestions() {
 // 共通初期化
 // ==================================================
 
-createAnswerTimer();
+if (stageName !== "sanctuary") {
+  createAnswerTimer();
+}
 
 loadQuestions();

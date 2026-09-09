@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "passage": "To: All Staff\n\nThank you for your continued support of our company. We are pleased to announce that the annual employee workshop will be held on May 18. The workshop will focus on improving communication with customers.\n\nThe workshop will _____ at 9:00 A.M. and will continue until noon. All employees are encouraged to attend, especially those who regularly communicate with customers. Please register by May 10 so that we can prepare enough materials for all participants.\n\nWe look forward to seeing you at the workshop.",
+    "questions": [
+      {
+        "id": 1,
+        "text": "",
+        "blank": "begin",
+        "answers": [
+          "A. commence",
+          "B. occur",
+          "C. proceed",
+          "D. operate"
+        ],
+        "correct": "A"
+      },
+      {
+        "id": 2,
+        "text": "",
+        "blank": "especially",
+        "answers": [
+          "A. especially",
+          "B. respectively",
+          "C. considerably",
+          "D. approximately"
+        ],
+        "correct": "A"
+      },
+      {
+        "id": 3,
+        "text": "",
+        "blank": "participants",
+        "answers": [
+          "A. participate",
+          "B. participants",
+          "C. participation",
+          "D. participating"
+        ],
+        "correct": "B"
+      },
+      {
+        "id": 4,
+        "text": "",
+        "answers": [
+          "A. To announce a training workshop",
+          "B. To introduce a new employee",
+          "C. To change the company's business hours",
+          "D. To request feedback from customers"
+        ],
+        "correct": "A"
+      }
+    ]
+  }
+]

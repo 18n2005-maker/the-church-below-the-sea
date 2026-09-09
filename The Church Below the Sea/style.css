@@ -709,3 +709,121 @@ body {
 body:has(.quiz-screen) {
   overflow-y: auto;
 }
+
+/* ==================================================
+   TOEIC Part 6
+   左：本文 / 右：問題
+================================================== */
+
+#part6Content {
+  width: 90vw;
+  max-width: 1400px;
+  height: 70vh;
+
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   左：本文
+================================================== */
+
+#passage {
+  height: 100%;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  padding: 30px;
+
+  text-align: left;
+  line-height: 1.8;
+}
+
+
+/* ==================================================
+   右：問題
+================================================== */
+
+#part6Questions {
+  height: 100%;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  padding: 10px 20px 30px;
+
+  text-align: left;
+}
+
+
+/* ==================================================
+   個別問題
+================================================== */
+
+.part6-question {
+  margin-bottom: 40px;
+}
+
+
+/* ==================================================
+   スクロールバー
+================================================== */
+
+#passage::-webkit-scrollbar,
+#part6Questions::-webkit-scrollbar {
+  width: 6px;
+}
+
+#passage::-webkit-scrollbar-thumb,
+#part6Questions::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+
+/* ==================================================
+   スマホ
+================================================== */
+
+@media (max-width: 768px) {
+
+  #part6Content {
+    width: 92vw;
+    height: auto;
+
+    display: block;
+
+    overflow: visible;
+  }
+
+
+  #passage {
+    height: auto;
+    max-height: 45vh;
+
+    margin-bottom: 25px;
+
+    overflow-y: auto;
+
+    padding: 20px;
+  }
+
+
+  #part6Questions {
+    height: auto;
+    max-height: none;
+
+    overflow: visible;
+
+    padding: 0;
+  }
+
+}

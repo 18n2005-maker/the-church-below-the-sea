@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Sanctuary | The Church Below the Sea</title>
+
+  <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       TOEIC Part 6
+  ========================= -->
+
+  <div
+    class="quiz-screen"
+    data-question-file="questions/sanctuary.json"
+  >
+
+
+    <p class="quiz-location">
+      SANCTUARY
+    </p>
+
+
+    <h1>
+      TOEIC PART 6
+    </h1>
+
+
+    <p class="stage-number">
+      STAGE 06
+    </p>
+
+
+    <!-- =========================
+         タイマー
+    ========================= -->
+
+    <p
+      id="part6Timer"
+      class="answer-timer"
+    >
+      02:30
+    </p>
+
+
+    <!-- =========================
+         MASTERED
+    ========================= -->
+
+    <p class="mastery-count">
+
+      <span id="totalCount">
+        0
+      </span>問中
+
+      <span id="masteryCount">
+        0
+      </span>問 MASTERED /
+
+      残り
+
+      <span id="remainingCount">
+        0
+      </span>問
+
+    </p>
+
+
+    <!-- =========================
+         Part 6本体
+    ========================= -->
+
+    <div
+      id="part6Content"
+      class="question"
+    >
+
+
+      <!-- =========================
+           本文
+      ========================= -->
+
+      <div
+        id="passage"
+        class="passage"
+      >
+      </div>
+
+
+      <!-- =========================
+           4問
+      ========================= -->
+
+      <div
+        id="part6Questions"
+      >
+      </div>
+
+
+      <!-- =========================
+           結果
+      ========================= -->
+
+      <p id="result"></p>
+
+
+      <!-- =========================
+           次の長文
+      ========================= -->
+
+      <button
+        id="part6NextButton"
+        class="story-button"
+        style="display: none;"
+      >
+        NEXT PASSAGE
+      </button>
+
+
+      <!-- =========================
+           教会へ戻る
+      ========================= -->
+
+      <a
+        href="index.html#churchHome"
+        id="returnButton"
+        class="story-button"
+        style="display: none;"
+      >
+        RETURN TO THE CHURCH
+      </a>
+
+
+      <!-- =========================
+           間違い復習
+      ========================= -->
+
+      <button
+        id="reviewButton"
+        class="story-button"
+        style="display: none;"
+      >
+        REVIEW MISTAKES
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- Part 6を先に読み込む -->
+  <script src="quizjs/quiz-part6.js"></script>
+
+  <!-- 共通処理 -->
+  <script src="quizjs/quiz-common.js"></script>
+
+
+</body>
+
+</html>
