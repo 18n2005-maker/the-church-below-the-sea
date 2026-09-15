@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nekoto - Cat Life Diary</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==========================
+       Header
+  =========================== -->
+
+  <header class="header">
+
+    <div class="logo">
+      🐈 Nekoto
+    </div>
+
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#diary">Diary</a>
+      <a href="#profile">Profile</a>
+    </nav>
+
+  </header>
+
+
+  <!-- ==========================
+       Main
+  =========================== -->
+
+  <main>
+
+    <!-- Welcome -->
+
+    <section class="hero">
+
+      <p class="eyebrow">
+        CAT LIFE DIARY
+      </p>
+
+      <h1>
+        Little moments,<br>
+        precious memories.
+      </h1>
+
+      <p class="hero-text">
+        大切な猫との毎日を、ゆっくり残そう。
+      </p>
+
+    </section>
+
+
+    <!-- ==========================
+         Cat Profile
+    =========================== -->
+
+    <section id="profile" class="profile-section">
+
+      <div class="profile-card">
+
+        <div class="cat-icon">
+          🐈
+        </div>
+
+        <div class="profile-info">
+
+          <p class="profile-label">
+            MY CAT
+          </p>
+
+          <h2>
+            Luna
+          </h2>
+
+          <p>
+            2 years old ・ Female
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================
+         Stats
+    =========================== -->
+
+    <section class="stats-section">
+
+      <div class="stat-card">
+
+        <span class="stat-icon">
+          🍚
+        </span>
+
+        <span class="stat-number">
+          2
+        </span>
+
+        <span class="stat-label">
+          Meals
+        </span>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span class="stat-icon">
+          💧
+        </span>
+
+        <span class="stat-number">
+          4
+        </span>
+
+        <span class="stat-label">
+          Water
+        </span>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span class="stat-icon">
+          🧶
+        </span>
+
+        <span class="stat-number">
+          30
+        </span>
+
+        <span class="stat-label">
+          Play min
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================
+         Diary
+    =========================== -->
+
+    <section id="diary" class="diary-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            MEMORIES
+          </p>
+
+          <h2>
+            Today's Diary
+          </h2>
+
+        </div>
+
+        <button id="openModal" class="add-button">
+          ＋ 今日の記録を追加
+        </button>
+
+      </div>
+
+
+      <!-- Diary List -->
+
+      <div id="diaryList" class="diary-list">
+
+        <!--
+          日記はJavaScriptによって
+          ここに自動生成されます。
+        -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==========================
+       Modal
+  =========================== -->
+
+  <div id="modal" class="modal">
+
+    <div class="modal-content">
+
+      <button id="closeModal" class="close-button">
+        ×
+      </button>
+
+
+      <p class="eyebrow">
+        NEW MEMORY
+      </p>
+
+      <h2>
+        今日の思い出を残す
+      </h2>
+
+
+      <!-- Diary Form -->
+
+      <form id="diaryForm">
+
+
+        <!-- Date -->
+
+        <div class="form-group">
+
+          <label for="date">
+            日付
+          </label>
+
+          <input
+            type="date"
+            id="date"
+            required
+          >
+
+        </div>
+
+
+        <!-- Title -->
+
+        <div class="form-group">
+
+          <label for="title">
+            タイトル
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            placeholder="今日の出来事"
+            required
+          >
+
+        </div>
+
+
+        <!-- Text -->
+
+        <div class="form-group">
+
+          <label for="text">
+            日記
+          </label>
+
+          <textarea
+            id="text"
+            rows="5"
+            placeholder="今日の思い出を書いてみよう..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- Submit -->
+
+        <button
+          type="submit"
+          class="save-button"
+        >
+          保存する
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================
+       JavaScript
+  =========================== -->
+
+  <script src="index.js"></script>
+
+</body>
+
+</html>
