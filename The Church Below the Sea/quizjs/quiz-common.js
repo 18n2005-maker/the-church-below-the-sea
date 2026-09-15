@@ -1,372 +1,272 @@
-// =========================
-// 共通クイズシステム
-// =========================
-
-
 // ==================================================
-// 基本設定
+// TOEIC Learning Journey
+// quiz-common.js
 // ==================================================
 
-// 問題
+
+// =========================
+// 基本データ
+// =========================
+
 let questions = [];
 
-// JSONに入っている全問題数
 let totalQuestions = 0;
 
-// 現在の問題番号
 let currentQuestion = 0;
 
-// 正解数
 let correctAnswers = 0;
 
-// 復習モードかどうか
 let reviewMode = false;
 
 
-// ==================================================
-// タイマー
-// ==================================================
-
-let answerTimer = null;
-
-let timeRemaining = 10;
-
-let ANSWER_TIME = 10;
-
-
 // =========================
-// 解答時間を設定
+// 解答時間
 // =========================
+
+let answerTimeLimit = 0;
+
 
 function setAnswerTime(seconds) {
 
-  ANSWER_TIME = seconds;
+  answerTimeLimit =
+    seconds;
 
 }
 
 
-// ==================================================
-// HTMLの要素
-// ==================================================
+// =========================
+// DOM
+// =========================
 
 const quizScreen =
-  document.querySelector(".quiz-screen");
+  document.querySelector(
+    ".quiz-screen"
+  );
+
 
 const questionNumber =
-  document.querySelector(".question-number");
+  document.querySelector(
+    ".question-number"
+  );
+
 
 const questionText =
-  document.querySelector(".question-text");
+  document.querySelector(
+    ".question-text"
+  );
+
 
 const answerArea =
-  document.querySelector(".answer-buttons");
+  document.querySelector(
+    ".answer-buttons"
+  );
+
 
 const result =
-  document.querySelector("#result");
+  document.querySelector(
+    "#result"
+  );
+
 
 const nextButton =
-  document.querySelector("#nextButton");
+  document.querySelector(
+    "#nextButton"
+  );
+
 
 const returnButton =
-  document.querySelector("#returnButton");
+  document.querySelector(
+    "#returnButton"
+  );
+
 
 const reviewButton =
-  document.querySelector("#reviewButton");
+  document.querySelector(
+    "#reviewButton"
+  );
+
 
 const startButton =
-  document.querySelector("#startButton");
+  document.querySelector(
+    "#startButton"
+  );
+
 
 const playButton =
-  document.querySelector("#playButton");
+  document.querySelector(
+    "#playButton"
+  );
 
 
-// ==================================================
-// ステージ情報
-// ==================================================
+// =========================
+// 問題ファイル
+// =========================
 
 const questionFile =
-  quizScreen.dataset.questionFile;
+  quizScreen?.dataset.questionFile || "";
+
 
 const stageName =
   questionFile
     .split("/")
     .pop()
-    .replace(".json", "");
+    .replace(
+      ".json",
+      ""
+    );
 
 
-// ==================================================
-// 問題ID
-// ==================================================
+// =========================
+// 問題キー
+// =========================
 
-function getQuestionKey(question) {
-
-  return `${stageName}-${question.id}`;
-
-}
-
-
-// ==================================================
-// Part 3問題ID
-// ==================================================
-
-function getPart3QuestionKey(
-  set,
+function getQuestionKey(
   question
 ) {
 
-  return `${stageName}-${set.id}-${question.id}`;
+  return (
+    `${stageName}-${question.id}`
+  );
 
 }
 
 
-// ==================================================
-// タイマー部品
-// ==================================================
-
-
 // =========================
-// タイマー部品を作る
+// 解答タイマー
 // =========================
+
+let answerTimer = null;
+
+let answerTimeRemaining = 0;
+
 
 function createAnswerTimer() {
 
-  let timerArea =
-    document.querySelector("#timerArea");
-
-
-  // timerAreaがなければ作る
-  if (!timerArea) {
-
-    timerArea =
-      document.createElement("div");
-
-    timerArea.id =
-      "timerArea";
-
-    questionText.before(
-      timerArea
-    );
-
-  }
-
-
-  // タイマー本体
-  const timer =
-    document.createElement("div");
-
-  timer.classList.add(
-    "answer-timer"
-  );
-
-
-  // タイマーバー
-  const timerBar =
-    document.createElement("div");
-
-  timerBar.classList.add(
-    "timer-bar"
-  );
-
-
-  // 残り時間バー
-  const timerProgress =
-    document.createElement("div");
-
-  timerProgress.id =
-    "timerBar";
-
-
-  // 秒数
-  const timerText =
-    document.createElement("p");
-
-  timerText.id =
-    "timerText";
-
-  timerText.textContent =
-    `${ANSWER_TIME}s`;
-
-
-  // 組み立て
-  timerBar.appendChild(
-    timerProgress
-  );
-
-  timer.appendChild(
-    timerBar
-  );
-
-  timer.appendChild(
-    timerText
-  );
-
-  timerArea.appendChild(
-    timer
-  );
-
-}
-
-
-// =========================
-// タイマー取得
-// =========================
-
-function getAnswerTimer() {
-
-  return document.querySelector(
-    ".answer-timer"
-  );
-
-}
-
-
-// =========================
-// タイマー表示更新
-// =========================
-
-function updateTimerDisplay() {
-
-  const timerText =
+  let timer =
     document.querySelector(
-      "#timerText"
-    );
-
-  const timerBar =
-    document.querySelector(
-      "#timerBar"
+      "#answerTimer"
     );
 
 
-  if (timerText) {
+  if (timer) {
 
-    timerText.textContent =
-      `${timeRemaining}s`;
+    return timer;
 
   }
 
 
-  if (timerBar) {
+  timer =
+    document.createElement(
+      "p"
+    );
 
-    const percentage =
-      (
-        timeRemaining /
-        ANSWER_TIME
-      ) * 100;
 
-    timerBar.style.width =
-      `${percentage}%`;
+  timer.id =
+    "answerTimer";
+
+
+  timer.style.display =
+    "none";
+
+
+  if (answerArea) {
+
+    answerArea.before(
+      timer
+    );
 
   }
+
+
+  return timer;
 
 }
 
-
-// =========================
-// タイマー表示
-// =========================
 
 function showAnswerTimer() {
 
-  const timerArea =
-    document.querySelector(
-      ".answer-timer"
-    );
+  const timer =
+    createAnswerTimer();
 
-  if (!timerArea) {
-    return;
-  }
 
-  timerArea.style.display =
+  answerTimeRemaining =
+    answerTimeLimit;
+
+
+  timer.textContent =
+    `${answerTimeRemaining}`;
+
+
+  timer.style.display =
     "block";
 
 }
 
 
-// =========================
-// タイマー非表示
-// =========================
-
 function hideAnswerTimer() {
 
-  const timerArea =
+  const timer =
     document.querySelector(
-      ".answer-timer"
+      "#answerTimer"
     );
 
-  if (!timerArea) {
-    return;
-  }
 
-  timerArea.style.display =
-    "none";
+  if (timer) {
 
-}
-
-
-// =========================
-// タイマー停止
-// =========================
-
-function stopAnswerTimer() {
-
-  if (
-    answerTimer !== null
-  ) {
-
-    clearInterval(
-      answerTimer
-    );
-
-    answerTimer =
-      null;
+    timer.style.display =
+      "none";
 
   }
 
-}
-
-
-// =========================
-// タイマーリセット
-// =========================
-
-function resetAnswerTimer() {
 
   stopAnswerTimer();
 
-  timeRemaining =
-    ANSWER_TIME;
-
-  updateTimerDisplay();
-
 }
 
-
-// =========================
-// タイマー開始
-// =========================
 
 function startAnswerTimer() {
 
   stopAnswerTimer();
 
-  timeRemaining =
-    ANSWER_TIME;
 
-  updateTimerDisplay();
+  if (
+    answerTimeLimit <= 0
+  ) {
+
+    return;
+
+  }
+
+
+  answerTimeRemaining =
+    answerTimeLimit;
+
+
+  const timer =
+    createAnswerTimer();
+
+
+  timer.textContent =
+    `${answerTimeRemaining}`;
+
+
+  timer.style.display =
+    "block";
 
 
   answerTimer =
     setInterval(
       () => {
 
-        timeRemaining--;
-
-        updateTimerDisplay();
+        answerTimeRemaining--;
 
 
-        // 時間切れ
+        timer.textContent =
+          `${answerTimeRemaining}`;
+
+
         if (
-          timeRemaining <= 0
+          answerTimeRemaining <= 0
         ) {
 
           stopAnswerTimer();
@@ -382,14 +282,31 @@ function startAnswerTimer() {
 }
 
 
-// ==================================================
-// 音声共通処理
-// ==================================================
+function stopAnswerTimer() {
+
+  if (
+    answerTimer !== null
+  ) {
+
+    clearInterval(
+      answerTimer
+    );
+
+
+    answerTimer =
+      null;
+
+  }
+
+}
 
 
 // =========================
-// 音声停止
+// 音声
 // =========================
+
+let currentSpeech = null;
+
 
 function stopSpeech() {
 
@@ -401,66 +318,46 @@ function stopSpeech() {
 
   }
 
+
+  currentSpeech =
+    null;
+
 }
 
 
-// =========================
-// 音声再生
-// =========================
+function speakText(text) {
 
-function playSpeech(
-  text,
-  onEnd
-) {
+  if (
+    !(
+      "speechSynthesis"
+      in window
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  stopSpeech();
+
 
   const utterance =
     new SpeechSynthesisUtterance(
       text
     );
 
+
   utterance.lang =
     "en-US";
+
 
   utterance.rate =
     0.9;
 
-  utterance.pitch =
-    1.0;
 
-
-  utterance.onstart = () => {
-
-    console.log(
-      "音声再生開始"
-    );
-
-  };
-
-
-  utterance.onend = () => {
-
-    console.log(
-      "音声再生終了"
-    );
-
-    if (onEnd) {
-
-      onEnd();
-
-    }
-
-  };
-
-
-  utterance.onerror =
-    (event) => {
-
-      console.error(
-        "音声再生エラー:",
-        event.error
-      );
-
-    };
+  currentSpeech =
+    utterance;
 
 
   speechSynthesis.speak(
@@ -470,179 +367,88 @@ function playSpeech(
 }
 
 
-// =========================
-// PLAYボタンを作る
-// =========================
-//
-// ※ 共通JSでは自動生成しない
-// ※ 各PartのJSから必要に応じて使用する
-// =========================
-
 function createPlayButton(
   text,
-  onFirstEnd
+  callback
 ) {
 
-  const audioArea =
+  const wrapper =
     document.createElement(
       "div"
     );
 
-  audioArea.classList.add(
-    "audio-button-area"
-  );
+
+  wrapper.className =
+    "audio-area";
 
 
-  const playButton =
+  const button =
     document.createElement(
       "button"
     );
 
-  playButton.textContent =
-    "▶ PLAY";
 
-  playButton.classList.add(
-    "story-button"
-  );
+  button.className =
+    "story-button";
 
 
-  let firstPlay = true;
+  button.textContent =
+    "PLAY";
 
 
-  playButton.addEventListener(
+  button.addEventListener(
     "click",
     () => {
 
       stopSpeech();
 
 
-      playSpeech(
-        text,
-        () => {
+      if (callback) {
 
-          if (firstPlay) {
+        callback();
 
-            firstPlay =
-              false;
+      }
 
 
-            if (onFirstEnd) {
-
-              onFirstEnd();
-
-            }
-
-          }
-
-        }
+      speakText(
+        text
       );
 
     }
   );
 
 
-  audioArea.appendChild(
-    playButton
+  wrapper.appendChild(
+    button
   );
 
 
-  return audioArea;
+  return wrapper;
 
 }
 
 
-// ==================================================
-// MASTERED
-// ==================================================
-
-
 // =========================
-// MASTERED数を更新
+// Mistakes
 // =========================
 
-function updateMasteryCount(
-  total,
-  masteredQuestions
-) {
+function getMistakes() {
 
-  const totalCount =
-    document.querySelector(
-      "#totalCount"
-    );
-
-  const masteryCount =
-    document.querySelector(
-      "#masteryCount"
-    );
-
-  const remainingCount =
-    document.querySelector(
-      "#remainingCount"
-    );
-
-
-  const masteredCount =
-    masteredQuestions.filter(
-      key =>
-        typeof key === "string" &&
-        key.startsWith(
-          `${stageName}-`
-        )
-    ).length;
-
-
-  const remaining =
-    Math.max(
-      total - masteredCount,
-      0
-    );
-
-
-  if (totalCount) {
-
-    totalCount.textContent =
-      total;
-
-  }
-
-
-  if (masteryCount) {
-
-    masteryCount.textContent =
-      masteredCount;
-
-  }
-
-
-  if (remainingCount) {
-
-    remainingCount.textContent =
-      remaining;
-
-  }
+  return JSON.parse(
+    localStorage.getItem(
+      "mistakes"
+    ) || "[]"
+  );
 
 }
 
-
-// ==================================================
-// 間違い管理
-// ==================================================
-
-
-// =========================
-// 間違い保存
-// =========================
 
 function saveMistake(
   question
 ) {
 
   const mistakes =
-    JSON.parse(
-      localStorage.getItem(
-        "mistakes"
-      )
-    ) || [];
+    getMistakes();
 
 
   const questionKey =
@@ -651,25 +457,26 @@ function saveMistake(
     );
 
 
-  const alreadyExists =
+  const exists =
     mistakes.some(
       mistake =>
-        mistake.key ===
+        mistake.questionKey ===
         questionKey
     );
 
 
-  if (
-    !alreadyExists
-  ) {
+  if (!exists) {
 
     mistakes.push({
 
-      key:
+      questionKey:
         questionKey,
 
-      question:
-        question
+      questionId:
+        question.id,
+
+      stage:
+        stageName
 
     });
 
@@ -685,92 +492,19 @@ function saveMistake(
 
 }
 
-
-// =========================
-// Part 3の間違い保存
-// =========================
-
-function savePart3Mistake(
-  set,
-  question
-) {
-
-  const mistakes =
-    JSON.parse(
-      localStorage.getItem(
-        "mistakes"
-      )
-    ) || [];
-
-
-  const questionKey =
-    getPart3QuestionKey(
-      set,
-      question
-    );
-
-
-  const alreadyExists =
-    mistakes.some(
-      mistake =>
-        mistake.key ===
-        questionKey
-    );
-
-
-  if (
-    !alreadyExists
-  ) {
-
-    mistakes.push({
-
-      key:
-        questionKey,
-
-      question:
-        question,
-
-      part3SetId:
-        set.id,
-
-      conversation:
-        set.conversation
-
-    });
-
-  }
-
-
-  localStorage.setItem(
-    "mistakes",
-    JSON.stringify(
-      mistakes
-    )
-  );
-
-}
-
-
-// =========================
-// 間違いから削除
-// =========================
 
 function removeFromMistakes(
   questionKey
 ) {
 
   const mistakes =
-    JSON.parse(
-      localStorage.getItem(
-        "mistakes"
-      )
-    ) || [];
+    getMistakes();
 
 
-  const updatedMistakes =
+  const filtered =
     mistakes.filter(
       mistake =>
-        mistake.key !==
+        mistake.questionKey !==
         questionKey
     );
 
@@ -778,41 +512,82 @@ function removeFromMistakes(
   localStorage.setItem(
     "mistakes",
     JSON.stringify(
-      updatedMistakes
+      filtered
     )
   );
 
 }
 
 
-// ==================================================
-// MASTERED管理
-// ==================================================
+// =========================
+// Part 3 Mistakes
+// =========================
+
+function savePart3Mistake(
+  question
+) {
+
+  const mistakes =
+    JSON.parse(
+      localStorage.getItem(
+        "part3Mistakes"
+      ) || "[]"
+    );
+
+
+  if (
+    !mistakes.includes(
+      question.id
+    )
+  ) {
+
+    mistakes.push(
+      question.id
+    );
+
+  }
+
+
+  localStorage.setItem(
+    "part3Mistakes",
+    JSON.stringify(
+      mistakes
+    )
+  );
+
+}
 
 
 // =========================
-// MASTEREDに追加
+// Mastered
 // =========================
+
+function getMasteredQuestions() {
+
+  return JSON.parse(
+    localStorage.getItem(
+      "masteredQuestions"
+    ) || "[]"
+  );
+
+}
+
 
 function saveMastered(
   questionKey
 ) {
 
-  const masteredQuestions =
-    JSON.parse(
-      localStorage.getItem(
-        "masteredQuestions"
-      )
-    ) || [];
+  const mastered =
+    getMasteredQuestions();
 
 
   if (
-    !masteredQuestions.includes(
+    !mastered.includes(
       questionKey
     )
   ) {
 
-    masteredQuestions.push(
+    mastered.push(
       questionKey
     );
 
@@ -822,119 +597,95 @@ function saveMastered(
   localStorage.setItem(
     "masteredQuestions",
     JSON.stringify(
-      masteredQuestions
+      mastered
     )
-  );
-
-
-  updateMasteryCount(
-    totalQuestions,
-    masteredQuestions
   );
 
 }
 
 
-// =========================
-// MASTEREDから削除
-// =========================
-
 function removeFromMastered(
   questionKey
 ) {
 
-  const masteredQuestions =
-    JSON.parse(
-      localStorage.getItem(
-        "masteredQuestions"
-      )
-    ) || [];
+  const mastered =
+    getMasteredQuestions();
 
 
-  const updated =
-    masteredQuestions.filter(
+  const filtered =
+    mastered.filter(
       key =>
-        key !== questionKey
+        key !==
+        questionKey
     );
 
 
   localStorage.setItem(
     "masteredQuestions",
     JSON.stringify(
-      updated
+      filtered
     )
   );
 
+}
 
-  updateMasteryCount(
-    totalQuestions,
-    updated
-  );
+
+function updateMasteryCount() {
+
+  const totalCount =
+    document.querySelector(
+      "#totalCount"
+    );
+
+
+  const masteryCount =
+    document.querySelector(
+      "#masteryCount"
+    );
+
+
+  const remainingCount =
+    document.querySelector(
+      "#remainingCount"
+    );
+
+
+  const mastered =
+    getMasteredQuestions();
+
+
+  if (totalCount) {
+
+    totalCount.textContent =
+      totalQuestions;
+
+  }
+
+
+  if (masteryCount) {
+
+    masteryCount.textContent =
+      mastered.length;
+
+  }
+
+
+  if (remainingCount) {
+
+    remainingCount.textContent =
+      Math.max(
+        0,
+        totalQuestions -
+        mastered.length
+      );
+
+  }
 
 }
 
 
-// ==================================================
+// =========================
 // 回答処理
-// ==================================================
-
-
-// =========================
-// 回答ボタンを作る
-// =========================
-
-function createAnswerButtons(
-  question
-) {
-
-  answerArea.innerHTML =
-    "";
-
-
-  question.answers.forEach(
-    (answer, index) => {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.textContent =
-        answer;
-
-
-      button.dataset.answer =
-        String.fromCharCode(
-          65 + index
-        );
-
-
-      answerArea.appendChild(
-        button
-      );
-
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          answerQuestion(
-            question,
-            button
-          );
-
-        }
-      );
-
-    }
-  );
-
-}
-
-
-// =========================
-// 回答する
 // =========================
 
 function answerQuestion(
@@ -969,39 +720,39 @@ function answerQuestion(
     );
 
 
+  const isCorrect =
+    selectedButton.dataset.answer ===
+    question.correct;
+
+
   // =========================
   // 正解
   // =========================
 
-  if (
-    selectedButton.dataset.answer ===
-    question.correct
-  ) {
+  if (isCorrect) {
 
     result.textContent =
       "Correct!";
 
+
     if (
-    window.handlePart2Answer
-  ) {
+      window.handlePart2Answer
+    ) {
 
-    window.handlePart2Answer(
-      question,
-      true
-    );
+      window.handlePart2Answer(
+        question,
+        true
+      );
 
-  }
+    }
+
+
     selectedButton.classList.add(
       "correct"
     );
 
 
     correctAnswers++;
-
-
-    saveMastered(
-      questionKey
-    );
 
 
     removeFromMistakes(
@@ -1017,20 +768,22 @@ function answerQuestion(
 
   else {
 
-  result.textContent =
-    "Incorrect.";
+    result.textContent =
+      "Incorrect.";
 
 
-  if (
-    window.handlePart2Answer
-  ) {
+    if (
+      window.handlePart2Answer
+    ) {
 
-    window.handlePart2Answer(
-      question,
-      false
-    );
+      window.handlePart2Answer(
+        question,
+        false
+      );
 
-  }
+    }
+
+
     selectedButton.classList.add(
       "incorrect"
     );
@@ -1064,46 +817,58 @@ function answerQuestion(
   questionText.textContent =
     question.text;
 
+
   questionText.style.display =
     "block";
 
 
-  nextButton.style.display =
-    "block";
-
-}
-
-
-// ==================================================
-// 時間切れ
-// ==================================================
-
-
-// =========================
-// 時間切れ処理
-// ==================================================
-
-function timeUp() {
-
-  // --------------------------------
-  // Part 3
-  // --------------------------------
+  // =========================
+  // Part 2
+  // =========================
 
   if (
-    stageName ===
-    "cathedral" &&
-    window.handlePart3TimeUp
+    stageName === "library"
   ) {
 
-    window.handlePart3TimeUp();
-
-    return;
+    showPart2UnderstandingCheck(
+      question,
+      isCorrect
+    );
 
   }
 
 
+  // =========================
+  // その他
+  // =========================
+
+  else {
+
+    nextButton.style.display =
+      "block";
+
+  }
+
+}
+
+
+// =========================
+// 時間切れ
+// =========================
+
+function timeUp() {
+
+  stopSpeech();
+
+
+  result.textContent =
+    "Time Up.";
+
+
   const question =
-    questions[currentQuestion];
+    questions[
+      currentQuestion
+    ];
 
 
   if (!question) {
@@ -1113,33 +878,33 @@ function timeUp() {
   }
 
 
-  const answerButtons =
-    answerArea.querySelectorAll(
-      "button"
-    );
-
-
-  answerButtons.forEach(
-    button => {
-
-      button.disabled =
-        true;
-
-    }
-  );
-
-
-  result.textContent =
-    "Time's up!";
-
+  // =========================
+  // Mistakeとして保存
+  // =========================
 
   saveMistake(
     question
   );
 
 
-  answerButtons.forEach(
+  // =========================
+  // 選択肢を停止
+  // =========================
+
+  const buttons =
+    answerArea.querySelectorAll(
+      "button"
+    );
+
+
+  buttons.forEach(
     button => {
+
+      button.disabled =
+        true;
+
+
+      // 正解を表示
 
       if (
         button.dataset.answer ===
@@ -1156,25 +921,58 @@ function timeUp() {
   );
 
 
-  nextButton.style.display =
+  // =========================
+  // 問題文を表示
+  // =========================
+
+  questionText.textContent =
+    question.text;
+
+
+  questionText.style.display =
     "block";
+
+
+  // =========================
+  // Part 2
+  // =========================
+
+  if (
+    stageName === "library"
+  ) {
+
+    showPart2UnderstandingCheck(
+      question,
+      false
+    );
+
+  }
+
+
+  // =========================
+  // その他
+  // =========================
+
+  else {
+
+    nextButton.style.display =
+      "block";
+
+  }
 
 }
 
 
-// ==================================================
-// 問題表示
-// ==================================================
-
-
 // =========================
-// 問題を表示
+// 問題表示
 // =========================
 
 function showQuestion() {
 
   const question =
-    questions[currentQuestion];
+    questions[
+      currentQuestion
+    ];
 
 
   if (!question) {
@@ -1184,15 +982,9 @@ function showQuestion() {
   }
 
 
-  stopSpeech();
-
-  stopAnswerTimer();
-
-  resetAnswerTimer();
-
-
-  answerArea.innerHTML =
-    "";
+  // =========================
+  // 初期化
+  // =========================
 
   result.textContent =
     "";
@@ -1201,26 +993,34 @@ function showQuestion() {
   nextButton.style.display =
     "none";
 
-  returnButton.style.display =
+
+  questionText.style.display =
     "none";
 
-  reviewButton.style.display =
-    "none";
+
+  answerArea.innerHTML =
+    "";
+
+
+  hideAnswerTimer();
+
+
+  stopSpeech();
 
 
   // =========================
-  // 古いPLAYボタンを削除
+  // 前の音声エリア削除
   // =========================
 
-  const oldAudioArea =
+  const oldAudio =
     document.querySelector(
-      ".audio-button-area"
+      ".audio-area"
     );
 
 
-  if (oldAudioArea) {
+  if (oldAudio) {
 
-    oldAudioArea.remove();
+    oldAudio.remove();
 
   }
 
@@ -1238,10 +1038,11 @@ function showQuestion() {
 
 
   // =========================
-  // Partごとの表示
+  // Part 2独自表示
   // =========================
 
   if (
+    stageName === "library" &&
     window.setupPartQuestion
   ) {
 
@@ -1253,62 +1054,140 @@ function showQuestion() {
 
 
   // =========================
-  // 回答ボタン作成
+  // 選択肢を作成
   // =========================
 
-  if (
-    !window.customQuestionButtons
-  ) {
-
-    createAnswerButtons(
-      question
-    );
-
-  }
+  createAnswerButtons(
+    question
+  );
 
 }
 
 
-// ==================================================
-// NEXT
-// ==================================================
+// =========================
+// 選択肢生成
+// =========================
+
+function createAnswerButtons(
+  question
+) {
+
+  answerArea.innerHTML =
+    "";
+
+
+  // =========================
+  // 選択肢があるか確認
+  // =========================
+
+  if (
+    !question.answers ||
+    question.answers.length === 0
+  ) {
+
+    console.error(
+      "選択肢がありません:",
+      question
+    );
+
+    return;
+
+  }
+
+
+  // =========================
+  // 選択肢を作成
+  // =========================
+
+  question.answers.forEach(
+    (answer, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      // A / B / C
+      const answerLetter =
+        String.fromCharCode(
+          65 + index
+        );
+
+
+      // 表示
+      button.textContent =
+        `${answerLetter}. ${answer}`;
+
+
+      // 正解判定用
+      button.dataset.answer =
+        answerLetter;
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          answerQuestion(
+            question,
+            button
+          );
+
+        }
+      );
+
+
+      answerArea.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  answerArea.style.display =
+    "block";
+
+}
+
+
+// =========================
+// NEXTボタン
+// =========================
 
 if (nextButton) {
+
   nextButton.addEventListener(
     "click",
     () => {
-      if (window.handleCustomNext) {
-        const handled =
-          window.handleCustomNext();
-
-        if (handled) {
-          return;
-        }
-      }
 
       currentQuestion++;
+
 
       if (
         currentQuestion >=
         questions.length
       ) {
+
         showStageComplete();
-        return;
+
       }
 
-      showQuestion();
+      else {
+
+        showQuestion();
+
+      }
+
     }
   );
+
 }
 
 
-// ==================================================
-// STAGE COMPLETE
-// ==================================================
-
-
 // =========================
-// ステージ終了
+// Stage Complete
 // =========================
 
 function showStageComplete() {
@@ -1318,7 +1197,7 @@ function showStageComplete() {
   stopSpeech();
 
 
-  questionNumber.textContent =
+  questionText.textContent =
     "STAGE COMPLETE";
 
 
@@ -1326,297 +1205,45 @@ function showStageComplete() {
     "block";
 
 
-  // --------------------------------
-  // Part 3
-  // --------------------------------
-
-  if (
-    stageName ===
-    "cathedral"
-  ) {
-
-    const total =
-      questions.reduce(
-        (
-          sum,
-          set
-        ) =>
-          sum +
-          (
-            set.questions
-              ? set.questions.length
-              : 0
-          ),
-        0
-      );
-
-
-    questionText.textContent =
-      `${correctAnswers} / ${total} CORRECT`;
-
-  }
-
-
-  // --------------------------------
-  // 通常Part
-  // --------------------------------
-
-  else {
-
-    questionText.textContent =
-      `${correctAnswers} / ${questions.length} CORRECT`;
-
-  }
-
-
   answerArea.innerHTML =
     "";
 
 
-  const oldAudioArea =
-    document.querySelector(
-      ".audio-button-area"
-    );
-
-
-  if (oldAudioArea) {
-
-    oldAudioArea.remove();
-
-  }
-
-
   result.textContent =
-    "Well done!";
+    `Score: ${
+      correctAnswers
+    } / ${
+      questions.length
+    }`;
 
 
   nextButton.style.display =
     "none";
 
-
-  returnButton.style.display =
-    "block";
-
-
-  if (startButton) {
-
-    startButton.style.display =
-      "none";
-
-  }
-
-
-  hideAnswerTimer();
-
-
-  // =========================
-  // MISTAKE
-  // =========================
 
   const mistakes =
-    JSON.parse(
-      localStorage.getItem(
-        "mistakes"
-      )
-    ) || [];
-
-
-  const stageMistakes =
-    mistakes.filter(
+    getMistakes().filter(
       mistake =>
-        typeof mistake.key === "string" &&
-        mistake.key.startsWith(
-          `${stageName}-`
-        )
+        mistake.stage ===
+        stageName
     );
 
 
-  if (
-    stageMistakes.length > 0
-  ) {
+  if (reviewButton) {
 
     reviewButton.style.display =
-      "block";
+      mistakes.length > 0
+        ? "block"
+        : "none";
 
   }
-
-
-  // =========================
-  // STAGE CLEARED判定
-  // =========================
-
-  const masteredQuestions =
-    JSON.parse(
-      localStorage.getItem(
-        "masteredQuestions"
-      )
-    ) || [];
-
-
-  fetch(questionFile)
-    .then(
-      response =>
-        response.json()
-    )
-    .then(
-      allQuestions => {
-
-        let requiredCount =
-          allQuestions.length;
-
-
-        // Part 3は3問×セット数
-        if (
-          stageName ===
-          "cathedral"
-        ) {
-
-          requiredCount =
-            allQuestions.reduce(
-              (
-                sum,
-                set
-              ) =>
-                sum +
-                (
-                  set.questions
-                    ? set.questions.length
-                    : 0
-                ),
-              0
-            );
-
-        }
-
-
-        const masteredCount =
-          masteredQuestions.filter(
-            key =>
-              typeof key === "string" &&
-              key.startsWith(
-                `${stageName}-`
-              )
-          ).length;
-
-
-        if (
-          masteredCount >=
-          requiredCount
-        ) {
-
-          const clearedStages =
-            JSON.parse(
-              localStorage.getItem(
-                "clearedStages"
-              )
-            ) || [];
-
-
-          if (
-            !clearedStages.includes(
-              stageName
-            )
-          ) {
-
-            clearedStages.push(
-              stageName
-            );
-
-          }
-
-
-          localStorage.setItem(
-            "clearedStages",
-            JSON.stringify(
-              clearedStages
-            )
-          );
-
-        }
-
-      }
-    );
 
 }
 
 
-// ==================================================
-// STAGE CLEARED
-// ==================================================
-
-
 // =========================
-// ステージクリア
+// Review Mistakes
 // =========================
-
-function showStageCleared() {
-
-  stopAnswerTimer();
-
-  stopSpeech();
-
-
-  questionNumber.textContent =
-    "STAGE CLEARED";
-
-
-  questionText.style.display =
-    "block";
-
-
-  questionText.textContent =
-    "You have mastered this stage.";
-
-
-  answerArea.innerHTML =
-    "";
-
-
-  const oldAudioArea =
-    document.querySelector(
-      ".audio-button-area"
-    );
-
-
-  if (oldAudioArea) {
-
-    oldAudioArea.remove();
-
-  }
-
-
-  result.textContent =
-    "Congratulations!";
-
-
-  nextButton.style.display =
-    "none";
-
-
-  reviewButton.style.display =
-    "none";
-
-
-  returnButton.style.display =
-    "block";
-
-
-  if (startButton) {
-
-    startButton.style.display =
-      "none";
-
-  }
-
-
-  hideAnswerTimer();
-
-}
-
-
-// ==================================================
-// REVIEW MISTAKES
-// ==================================================
 
 if (reviewButton) {
 
@@ -1624,94 +1251,13 @@ if (reviewButton) {
     "click",
     () => {
 
-      stopAnswerTimer();
-
-      stopSpeech();
-
-      const mistakes =
-        JSON.parse(
-          localStorage.getItem(
-            "mistakes"
-          )
-        ) || [];
-
-      const stageMistakes =
-        mistakes.filter(
-          mistake =>
-            typeof mistake.key === "string" &&
-            mistake.key.startsWith(
-              `${stageName}-`
-            )
-        );
-
-      if (
-        stageMistakes.length === 0
-      ) {
-
-        alert(
-          "There are no mistakes to review."
-        );
-
-        return;
-
-      }
-
       reviewMode =
         true;
 
-      // --------------------------------
-      // Part 3
-      // --------------------------------
 
-      if (
-        stageName ===
-        "cathedral"
-      ) {
-
-        questions =
-          stageMistakes.map(
-            mistake => {
-
-              return {
-
-                id:
-                  mistake.part3SetId,
-
-                conversation:
-                  mistake.conversation,
-
-                questions: [
-                  mistake.question
-                ]
-
-              };
-
-            }
-          );
-
-      }
-
-      // --------------------------------
-      // 通常Part
-      // --------------------------------
-
-      else {
-
-        questions =
-          stageMistakes.map(
-            mistake =>
-              mistake.question
-          );
-
-      }
-
-      currentQuestion =
-        0;
-
-      correctAnswers =
-        0;
-
-      showQuestion();
+      loadQuestions(
+        true
+      );
 
     }
   );
@@ -1719,16 +1265,13 @@ if (reviewButton) {
 }
 
 
-// ==================================================
+// =========================
 // 問題読み込み
-// ==================================================
-
-
-// =========================
-// JSONから読み込む
 // =========================
 
-async function loadQuestions() {
+async function loadQuestions(
+  reviewOnly = false
+) {
 
   try {
 
@@ -1738,210 +1281,127 @@ async function loadQuestions() {
       );
 
 
-    const allQuestions =
-      await response.json();
+    if (!response.ok) {
 
-      // =========================
-      // Part 6専用読み込み
-      // =========================
-
-      if (
-        stageName === "sanctuary" &&
-        window.loadPart6Questions
-      ) {
-
-        await window.loadPart6Questions(
-          allQuestions
-        );
-
-        return;
-
-      }
-
-    // =========================
-    // Part 3
-    // =========================
-
-    if (
-      stageName ===
-      "cathedral"
-    ) {
-
-      // --------------------------------
-      // Part 3は
-      // セット内の3問を数える
-      // --------------------------------
-
-      totalQuestions =
-        allQuestions.reduce(
-          (
-            sum,
-            set
-          ) =>
-            sum +
-            (
-              set.questions
-                ? set.questions.length
-                : 0
-            ),
-          0
-        );
-
-
-      const masteredQuestions =
-        JSON.parse(
-          localStorage.getItem(
-            "masteredQuestions"
-          )
-        ) || [];
-
-
-      updateMasteryCount(
-        totalQuestions,
-        masteredQuestions
+      throw new Error(
+        `HTTP ${
+          response.status
+        }`
       );
-
-
-      // --------------------------------
-      // 全問題がMASTEREDか確認
-      // --------------------------------
-
-      const allMastered =
-        allQuestions.every(
-          set =>
-            set.questions.every(
-              question =>
-                masteredQuestions.includes(
-                  getPart3QuestionKey(
-                    set,
-                    question
-                  )
-                )
-            )
-        );
-
-
-      if (
-        allMastered
-      ) {
-
-        showStageCleared();
-
-        return;
-
-      }
-
-
-      // --------------------------------
-      // まだMASTEREDでない
-      // セットだけ取得
-      // --------------------------------
-
-      const unansweredSets =
-        allQuestions.filter(
-          set =>
-            set.questions.some(
-              question =>
-                !masteredQuestions.includes(
-                  getPart3QuestionKey(
-                    set,
-                    question
-                  )
-                )
-            )
-        );
-
-
-      unansweredSets.sort(
-        () =>
-          Math.random() - 0.5
-      );
-
-
-      questions =
-        unansweredSets.slice(
-          0,
-          10
-        );
-
-
-      currentQuestion =
-        0;
-
-
-      correctAnswers =
-        0;
-
-
-      showQuestion();
-
-      return;
 
     }
 
 
-    // =========================
-    // 通常Part
-    // =========================
+    const allQuestions =
+      await response.json();
+
 
     totalQuestions =
       allQuestions.length;
 
 
-    const masteredQuestions =
-      JSON.parse(
-        localStorage.getItem(
-          "masteredQuestions"
-        )
-      ) || [];
+    updateMasteryCount();
 
 
-    updateMasteryCount(
-      totalQuestions,
-      masteredQuestions
-    );
+    let filteredQuestions =
+      allQuestions;
 
 
-    const unansweredQuestions =
-      allQuestions.filter(
-        question => {
+    // =========================
+    // Review Mode
+    // =========================
 
-          const key =
-            getQuestionKey(
-              question
-            );
+    if (reviewOnly) {
 
-
-          return !masteredQuestions.includes(
-            key
+      const mistakes =
+        getMistakes()
+          .filter(
+            mistake =>
+              mistake.stage ===
+              stageName
+          )
+          .map(
+            mistake =>
+              mistake.questionId
           );
 
-        }
-      );
 
+      filteredQuestions =
+        allQuestions.filter(
+          question =>
+            mistakes.includes(
+              question.id
+            )
+        );
+
+    }
+
+
+    // =========================
+    // 通常モード
+    // =========================
+
+    else {
+
+      const mastered =
+        getMasteredQuestions();
+
+
+      filteredQuestions =
+        allQuestions.filter(
+          question =>
+            !mastered.includes(
+              getQuestionKey(
+                question
+              )
+            )
+        );
+
+    }
+
+
+    // =========================
+    // 問題がない場合
+    // =========================
 
     if (
-      unansweredQuestions.length === 0
+      filteredQuestions.length ===
+      0
     ) {
 
-      showStageCleared();
+      showStageComplete();
 
       return;
 
     }
 
 
-    unansweredQuestions.sort(
-      () =>
-        Math.random() - 0.5
-    );
+    // =========================
+    // シャッフル
+    // =========================
+
+    filteredQuestions =
+      [...filteredQuestions]
+        .sort(
+          () =>
+            Math.random() -
+            0.5
+        );
 
 
-    questions =
-      unansweredQuestions.slice(
+    // =========================
+    // 最大10問
+    // =========================
+
+    filteredQuestions =
+      filteredQuestions.slice(
         0,
         10
       );
+
+
+    questions =
+      filteredQuestions;
 
 
     currentQuestion =
@@ -1954,27 +1414,303 @@ async function loadQuestions() {
 
     showQuestion();
 
-  } catch (error) {
+  }
+
+
+  catch (error) {
 
     console.error(
+      "問題読み込みエラー:",
       error
     );
 
 
-    questionText.textContent =
-      "問題を読み込めませんでした。";
+    if (questionText) {
+
+      questionText.textContent =
+        "問題を読み込めませんでした。";
+
+    }
 
   }
 
 }
 
 
-// ==================================================
-// 共通初期化
-// ==================================================
+// =========================
+// Part 2 理解度チェック
+// =========================
 
-if (stageName !== "sanctuary") {
-  createAnswerTimer();
+function showPart2UnderstandingCheck(
+  question,
+  isCorrect
+) {
+
+  answerArea.innerHTML =
+    "";
+
+
+  // =========================
+  // 聞き取り確認
+  // =========================
+
+  const listeningTitle =
+    document.createElement(
+      "p"
+    );
+
+
+  listeningTitle.textContent =
+    "この音声を聞き取れましたか？";
+
+
+  answerArea.appendChild(
+    listeningTitle
+  );
+
+
+  // =========================
+  // 聞き取れた
+  // =========================
+
+  const listeningYesButton =
+    document.createElement(
+      "button"
+    );
+
+
+  listeningYesButton.textContent =
+    "聞き取れた";
+
+
+  listeningYesButton.addEventListener(
+    "click",
+    () => {
+
+      showPart2MeaningCheck(
+        question,
+        isCorrect,
+        true
+      );
+
+    }
+  );
+
+
+  // =========================
+  // 聞き取れなかった
+  // =========================
+
+  const listeningNoButton =
+    document.createElement(
+      "button"
+    );
+
+
+  listeningNoButton.textContent =
+    "聞き取れなかった";
+
+
+  listeningNoButton.addEventListener(
+    "click",
+    () => {
+
+      showPart2MeaningCheck(
+        question,
+        isCorrect,
+        false
+      );
+
+    }
+  );
+
+
+  answerArea.appendChild(
+    listeningYesButton
+  );
+
+
+  answerArea.appendChild(
+    listeningNoButton
+  );
+
 }
+
+
+// =========================
+// Part 2 意味理解チェック
+// =========================
+
+function showPart2MeaningCheck(
+  question,
+  isCorrect,
+  listeningUnderstood
+) {
+
+  answerArea.innerHTML =
+    "";
+
+
+  // =========================
+  // 意味理解確認
+  // =========================
+
+  const meaningTitle =
+    document.createElement(
+      "p"
+    );
+
+
+  meaningTitle.textContent =
+    "この音声の意味を理解できましたか？";
+
+
+  answerArea.appendChild(
+    meaningTitle
+  );
+
+
+  // =========================
+  // 意味が理解できた
+  // =========================
+
+  const meaningYesButton =
+    document.createElement(
+      "button"
+    );
+
+
+  meaningYesButton.textContent =
+    "理解できた";
+
+
+  meaningYesButton.addEventListener(
+    "click",
+    () => {
+
+      savePart2LearningRecord(
+        question,
+        isCorrect,
+        listeningUnderstood,
+        true
+      );
+
+    }
+  );
+
+
+  // =========================
+  // 意味が理解できなかった
+  // =========================
+
+  const meaningNoButton =
+    document.createElement(
+      "button"
+    );
+
+
+  meaningNoButton.textContent =
+    "理解できなかった";
+
+
+  meaningNoButton.addEventListener(
+    "click",
+    () => {
+
+      savePart2LearningRecord(
+        question,
+        isCorrect,
+        listeningUnderstood,
+        false
+      );
+
+    }
+  );
+
+
+  answerArea.appendChild(
+    meaningYesButton
+  );
+
+
+  answerArea.appendChild(
+    meaningNoButton
+  );
+
+}
+
+
+// =========================
+// Part 2 学習記録
+// =========================
+
+function savePart2LearningRecord(
+  question,
+  isCorrect,
+  listeningUnderstood,
+  meaningUnderstood
+) {
+
+  const record = {
+
+    questionId:
+      getQuestionKey(
+        question
+      ),
+
+    type:
+      "listening",
+
+    answerResult:
+      isCorrect
+        ? "correct"
+        : "incorrect",
+
+    listeningResult:
+      listeningUnderstood
+        ? "understood"
+        : "not_understood",
+
+    meaningResult:
+      meaningUnderstood
+        ? "understood"
+        : "not_understood",
+
+    lastStudiedAt:
+      new Date().toISOString()
+
+  };
+
+
+  // =========================
+  // 学習記録保存
+  // =========================
+
+  if (
+    window.saveLearningRecord
+  ) {
+
+    window.saveLearningRecord(
+      record
+    );
+
+  }
+
+
+  // =========================
+  // NEXT
+  // =========================
+
+  nextButton.style.display =
+    "block";
+
+}
+
+
+// =========================
+// 初期化
+// =========================
+
+createAnswerTimer();
 
 loadQuestions();
